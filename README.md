@@ -1,2 +1,2 @@
 # comunicacao
-Programa para o setor de jornalismo do AndesSN
+Programa para o setor de jornalismo do AndesSN. Consiste em dois subprogramas. Uma primeira parte organiza o processo de trabalho das pautas, materias e publicação. A segunda parte é um banco de dados de recursos de comunicação das seções sindicias da base do Andes-SN, básicamente com informação sobre os sites, mas que poderia contar também com informação sobre publicações, jornalistas, etc.
