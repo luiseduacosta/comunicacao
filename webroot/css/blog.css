@@ -1,0 +1,211 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25/02/2018, 16:17:25
+    Author     : root
+*/
+
+/* Igual ou maior que 768. Tela computador */
+@media only screen and (min-width: 768px) {
+
+    /* background-color: red; */
+    /* div#container {background: rosybrown}; */
+
+    * {margin:0; padding: 0};
+
+    h1 {font-size: 130%};
+
+    #blog_left {
+        visibility: visible;
+        display: inline-block;
+        width: 15%; 
+        vertical-align: top;
+        margin: auto;
+        float: left;
+    }
+
+    #blog {
+        border: #000; 
+        display: inline-block; 
+        width: 55%; 
+        margin: 1%;
+        margin: auto;
+        vertical-align: top;
+        /* float: right; */
+    }
+
+    #blog table {
+        border: 2px solid black; 
+        border-radius: 15px;
+        padding: 1px
+    }
+
+    #blog_right {
+        border: #000; 
+        display: inline-block; 
+        width: 20%; 
+        margin: 1%; 
+        margin: auto;
+        vertical-align: top;
+        /* float: right; */
+    }
+
+    #blog_right table {
+        border: 2px solid black; 
+        border-radius: 15px;
+        padding: 1px
+    }
+
+    .menu_marcas ul {
+        border: 1px solid #003d4c;
+        float: left;
+        margin: 1px 50px 1px 1px;
+        list-style: none;
+    }
+
+    .menu_marcas ul li {
+        position: relative;
+        float: left;
+        border: 1px solid #003d4c;
+    }
+
+    .menu_marcas ul li a {
+        color: #333;
+        text-decoration: none;
+        padding: 5px 5px;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing:0.2em;
+        display: block;
+    }
+    .menu_marcas ul ul {
+        position: absolute;
+        top: 25px;
+        left: 0;
+        background-color: #fff;
+        display: none;
+    }
+
+    .menu_marcas ul li a:hover {
+        background: #333;
+        color: #fff;
+    }
+
+    .menu_marcas ul li:hover > ul {
+        display: block;
+    }
+
+    .menu_marcas_lista li ul li {
+        border: 1px solid #c0c0c0;
+        display: block;
+        width: 150px;
+    }
+
+}
+
+/* Menor o igual que 600 px = celular */
+@media only screen and (max-width: 600px) {
+
+    /* div#container {background: grey} */
+
+    /*
+        div#blog table {
+            border: 2px solid black; 
+            border-radius: 15px;
+            padding: 1px
+        }
+    */
+
+
+    *, *:after, *:before{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+        font-size: 12px;
+        line-height: 1em;
+    }
+
+    .aba { 
+        border: 2px solid black;
+        display: inline-block;
+        width: 100px;
+        height: 20px; 
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        font-size: 75%;
+        text-align: center;
+        background-color: #ffffff; 
+        color: #003d4c;
+        padding: 1px 3px;
+
+    }
+
+    a.aba:hover {
+        background-color: #003d4c; 
+        color: #ffffff;
+    }
+
+    a.aba:link {
+        background-color: #ffffff; 
+        color: #003d4c;
+        border: 2px solid black;
+        display: inline-block;
+        width: 100px;
+        height: 20px; 
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        font-size: 75%;
+        text-align: center;
+        padding: 1px 3px;
+        
+    }
+
+    a.aba:visited {
+        background-color: #ffffff; 
+        color: #003d4c;
+    }
+
+    a.aba:active {
+        background-color: #ffffff; 
+        color: #003d4c;
+    }
+
+    h1 {font-size: 100%}
+
+    div#blog_left {
+        visibility: hidden;
+        display: none;
+    }
+
+    div#blog {
+        border: #000; 
+        display: inline-block; 
+        width: 90%; 
+        margin: 1%; 
+        vertical-align: top
+    }
+
+    #blog table {
+        border: 2px solid black; 
+        border-radius: 15px;
+        padding: 1px
+    }
+
+    div#blog_right {
+        visibility: hidden;
+        display: none;
+    }
+
+    #blog_right table {
+        border: 2px solid black; 
+        border-radius: 15px;
+        padding: 1px
+    }
+
+}

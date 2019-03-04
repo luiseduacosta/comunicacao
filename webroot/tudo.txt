@@ -1,0 +1,21 @@
+Colocar um botão de publicar na matéria Feito!
+Tirar da página index das pautas o link para excluir (para excluir tem que entrar em ver a pauta). Feito!
+Tirar de página index das materias o link para excluir (para excluir tem que entrar em ver a matéria). Feito!
+Fazer o subprograma de usuários autorizados (os visitantes só podem ver o blog). Feito!
+Criar os menus para smartphones. Feito!
+Tirar das pautas e das matérias o campo observações (acho que atrapalha. Deixar somente os comentários). Feito!
+Fazer uma aba InformAndes em Pautas e Materias. Feito!
+Fixar pauta para que não suma mesmo com uma matéria associada (especialmente para a pauta do InformAndes. Feito!
+Upload de arquivos anexos. Feito! (a pasta files tem que ser proprietária do www-data:www-data ter permissões padrão 0755 e o php.ini tem que aumentar o upload_max_filesize até 8M (upload_max_filesize = 8M)). No ubuntu há dois php.ini: um na pasta /php/7.1/cli e outro na pasta /php/7.1/apache2
+
+Colocar como tag: notas políticas, eventos?
+Colocar a agenda do Google no Blog
+Fotos no Flick?
+Circulares, congressos, conads no Drive do Google?
+Poderia haver uma aba no submenu das materias para (re)classificar uma matéria, sem necessidade de editar a matéria tuda.
+
+Publicar o InformAndes em separado do blogue
+
+DICA!
+$log = $this->Votacao->getDataSource()->getLog(false, false);
+debug($log);
