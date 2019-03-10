@@ -24,7 +24,7 @@
 ?>
 
 <?php
-header('location: comunicacao/');
+header('location: comunicacaos/');
 ?>
 
 <?php
