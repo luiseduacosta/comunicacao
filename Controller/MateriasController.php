@@ -432,7 +432,7 @@ class MateriasController extends AppController {
                 'conditions' => $condicao, 'order' => array('Materia.data DESC'))
             );
 // pr($materias);
-// Se a consulta eh sobre as materias com as tags o array eh matriz            
+// Se a consulta eh sobre as materias com as tags o array eh matriz
         } elseif (!empty($tag)) {
 // echo "Tag com valor: " . $tag . "<br>";
             $this->loadModel('MateriasTag');
@@ -461,9 +461,10 @@ class MateriasController extends AppController {
                 if (!empty($resultado)) {
                     $matriz[] = $resultado;
                 }
-// pr($matriz);
             }
         }
+
+// pr($matriz);
 
 // Matriz (com tags) ou materias dependendo de se tem tag ou nao
 // Eh para fazer o box das matérias por ano e por mês
@@ -487,26 +488,27 @@ class MateriasController extends AppController {
 // pr($materias);
 
         if (isset($materias)) {
-            /*
-              // pr(count($materias));
-              for ($i = 0; $i < count($materias); $i++):
-              // echo "i => " . $i;
-              $datas_materias[$i] = $materias[$i]['Materia']['data'];
-              endfor;
-              arsort($datas_materias);
-              // echo "Matérias" . "<br>";
-              // pr($datas_materias);
-              array_multisort($datas_materias, SORT_DESC, $materias);
-             */
             $this->set('materias', $materias);
         }
 
-// Para fazer o box das quantidades de matérias por ano e mês
-        $datas = $this->Materia->query("SELECT DISTINCT Year(data) as ano, Month(data) as mes, COUNT(Month(data)) as q_mes FROM `materias` where materias.publicar = 1 group BY mes, ano order by mes, ano DESC");
-// pr($datas);
+        // Paa fazer o box da quantidade de matérias por ano e mês //
+        $quantidade_materias = $this->Materia->find('all', array('fields' => 'Materia.data'));
+        // pr($quantidade_materias);
+        foreach ($quantidade_materias as $q_materias):
+            $datos = explode('-', $q_materias['Materia']['data']);
+            // pr($datos[0]);
+            $anos[] = $datos[0] . "-" . $datos[1];
+        endforeach;
+        // pr($anos);
+        $datas = array_count_values($anos);
+        krsort($datas);
+        // pr($datas);
         $this->set('datas', $datas);
+
+        // Para compor o título do blob //
         $this->set('ano', $ano);
         $this->set('mes', $mes);
+        // die();
 
 // Para fazer o box das tags
         if ($ano and $mes and $tag):

@@ -40,9 +40,14 @@
 </table>
 
 <table>
-
+    <tr>
+        <th width='10%'>Data</th>
+        <th>Matéria</th>
+    </tr>
     <?php foreach ($tags['Materia'] as $tag): ?>
-        <tr>        
+    <?php // pr($tag); ?>
+        <tr>
+            <td><?php echo $tag['data']; ?></td>
             <td><?php echo $this->Html->link($tag['titulo'], '/materias/ver/' . $tag['id']); ?></td>
         </tr>
     <?php endforeach; ?>

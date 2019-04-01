@@ -5,7 +5,12 @@
 // pr($tags);
 // pr($ano);
 // pr($mes);
+
 ?>
+
+<?php setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese'); ?>
+<?php $fecha = '01-' . $mes . '-2000'; ?>
+<?php // echo "Mês " . strftime("%B", strtotime($fecha)); ?>
 
 <?php echo $this->Html->css('blog', null, array('inline' => false)); ?>
 
@@ -17,7 +22,7 @@
 if (empty($mes)) {
     echo "<h1 align='center'>Matérias do ano de " . $ano . "</h1>";
 } else {
-    echo "<h1 align='center'>Matérias do mês " . $mes . " do ano de " . $ano . "</h1>";
+    echo "<h1 align='center'>Matérias do mês de " . strftime("%B", strtotime($fecha)) . " do ano de " . $ano . "</h1>";
 }
 ?>
 
@@ -74,8 +79,8 @@ if (!empty($c_nova_materia)):
         <div class='blog_top'>
             <select onchange="window.location.href = this.value">
                 <option value="" selected="selected">Matérias por ano/mês</option>
-                <?php foreach ($datas as $c_data): ?>
-                    <option value=<?php echo '/comunicacao/Materias/blog/ano:' . $c_data[0]['ano'] . '/mes:' . $c_data[0]['mes']; ?>><?php echo 'Ano: ' . $c_data[0]['ano'] . ' Mes: ' . $c_data[0]['mes']; ?>
+                <?php foreach ($datas as $c_anomes => $c_data): ?>
+                     <option value=<?php echo '/comunicacao/Materias/blog/ano:' . substr($c_anomes, 0, 4) . '/mes:' . substr($c_anomes, 5, 2); ?>><?php echo substr($c_anomes, 0, 4) . ' do mês de ' . strftime("%B", strtotime("01-" . substr($c_anomes, 5, 2) . "-2000")); ?>
                     </option>
                 <?php endforeach; ?>
             </select>
@@ -147,7 +152,7 @@ if (!empty($c_nova_materia)):
 
         <?php
     else:
-        echo "<h1>Não há matérias publicas neste mês!</h1>";
+        echo "<h1>Ainda não há matérias publicadas neste mês!</h1>";
     endif;
     ?>
 
@@ -161,10 +166,11 @@ if (!empty($c_nova_materia)):
         //-->
         <table>
             <tr><th colspan="2">Matérias</th></tr>
-            <?php foreach ($datas as $c_data): ?>
+            <?php foreach ($datas as $c_anomes => $c_data): ?>
+            <?php // echo "anomes: " . $c_anomes . " " . $c_data; ?>
                 <tr>
-                    <td><?php echo $this->Html->link($c_data[0]['ano'], 'blog/' . 'ano:' . $c_data[0]['ano']); ?></td>
-                    <td><?php echo $c_data[0]['mes'] . ' (' . $this->Html->link($c_data[0]['q_mes'], 'blog/' . 'mes:' . $c_data[0]['mes'] . '/ano:' . $c_data[0]['ano']) . ')'; ?></td>
+                    <td><?php echo $this->Html->link(substr($c_anomes, 0, 4), 'blog/' . 'ano:' . substr($c_anomes, 0, 4)) . " - " . strftime("%B", strtotime("01-" . substr($c_anomes, 5, 2) . "-2000")); ?></td>
+                    <td><?php echo '(' . $this->Html->link($c_data, 'blog/' . 'mes:' . substr($c_anomes, 5, 2) . '/ano:' . substr($c_anomes, 0, 4)) . ')'; ?></td>
                 </tr>                         
             <?php endforeach; ?>
         </table>
@@ -182,40 +188,6 @@ if (!empty($c_nova_materia)):
                 </tr>
             <?php endforeach; ?>        
         </table>
-        <!--
-                <div class="menu_marcas">
-                    <nav>
-                        <ul class="menu_marcas_lista">
-                            <li><a href='#'>Marcas</a>
-                                <ul>
-        <?php foreach ($tags as $c_tag): ?>
-            
-                                            <li>
-            <?php echo $this->Html->link($c_tag['tags']['gt_setor'], 'blog/' . 'mes:' . $mes . '/ano:' . $ano . '/tag:' . $c_tag['tags']['id']); ?>
-            <?php echo $c_tag[0]['q_tags']; ?>
-                                            </li>
-            
-        <?php endforeach; ?>        
-                                </ul>
-                            </li>
-                            <li><a href='#'>Matérias</a>
-                                <ul>
-        
-        <?php foreach ($datas as $c_data): ?>
-            
-                                            <li>
-            <?php echo $this->Html->link($c_data[0]['ano'], 'blog/' . 'ano:' . $c_data[0]['ano']); ?>
-            <?php echo $c_data[0]['mes'] . ' (' . $this->Html->link($c_data[0]['q_mes'], 'blog/' . 'mes:' . $c_data[0]['mes'] . '/ano:' . $c_data[0]['ano']) . ')'; ?>
-                                            </li>
-            
-        <?php endforeach; ?>
-        
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-        //-->
 
     </div>
 

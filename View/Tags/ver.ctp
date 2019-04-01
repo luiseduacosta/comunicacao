@@ -2,13 +2,17 @@
 // pr($tags);
 ?>
 <?php
-echo $this->element('submenu_tags');
+// echo $this->element('submenu_tags');
 ?>
 
+<!--
 <div class="subsubmenusuperior">
 <?php echo $this->Html->link("Editar tag", "editar/" . $tags['Tag']['id'], array('class' => 'aba')); ?>
 <?php echo $this->Html->link("Excluir tag", "excluir/" . $tags['Tag']['id'], array('class' => 'aba', 'confirm' => 'Tem certeza')); ?>
 </div>
+//-->
+
+<!--
 <div class="celular">
     <select  onchange="window.location.href = this.value">
         <option value="" selected="selected">Marcas</option>
@@ -16,6 +20,7 @@ echo $this->element('submenu_tags');
         <option value="/comunicacao/Tags/excluir/<?php echo $tags['Tag']['id'];?>">Excluir esta marca</option>        
     </select>
 </div>
+//-->
 
 <table>
 
@@ -35,13 +40,16 @@ echo $this->element('submenu_tags');
 </table>
 
 <table>
-
+    <tr>
+        <th width='10%'>Data</th>
+        <th>Matéria</th>
+    </tr>
     <?php foreach ($tags['Materia'] as $tag): ?>
-        <tr>        
+    <?php // pr($tag); ?>
+        <tr>
+            <td><?php echo $tag['data']; ?></td>
             <td><?php echo $this->Html->link($tag['titulo'], '/materias/ver/' . $tag['id']); ?></td>
         </tr>
     <?php endforeach; ?>
 
 </table>
-
-
