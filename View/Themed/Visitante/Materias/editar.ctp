@@ -1,4 +1,6 @@
-<?php echo $this->Html->script('ckeditor/ckeditor', array('inline' => false)); ?>
+<?php
+
+echo $this->Html->script('ckeditor/ckeditor', array('inline' => false)); ?>
 
 <?php // debug($this->data); ?>
 

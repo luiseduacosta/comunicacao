@@ -137,7 +137,11 @@ if (!empty($c_nova_materia)):
 
                                 for ($j = 1; $j <= $q_tags; $j++):
                                     echo $this->Html->link($c_nova_materia[$i][$j]['Tag']['gt_setor'], '/tags/ver/' . $c_nova_materia[$i][$j]['Tag']['id']);
+                                    if ($j < $q_tags and $j < $q_tags - 1):
                                     echo ", ";
+                                    elseif ($j < $q_tags and $j == $q_tags - 1):
+                                    echo " e ";
+                                    endif;
                                 endfor;
                             }
                             ?>

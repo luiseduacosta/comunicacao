@@ -6,64 +6,68 @@
 echo $this->element('submenu_ssindicais');
 ?>
 
-<table>
-    <thead><?php echo '<h1>Seções sindicais por: ' . $campo . '</h1>'; ?></thead>
-    <tr>
-        <th><?php echo $this->Paginator->sort('Id', 'Id'); ?></th>
-        <th><?php echo $this->Paginator->sort('Secao_sindical','Seção Sindical'); ?></th>
-        <th><?php echo $this->Paginator->sort('Estado','Estado');?></th>
-        <th><?php echo $this->Paginator->sort('Regional','Regional');?></th>
-        <th><?php echo $this->Paginator->sort('Setor','Setor');?></th>
-        <th><?php echo $this->Paginator->sort('Site','Site');?></th>
-        <th><?php echo $this->Paginator->sort('Facebook','Facebook');?></th>
-        <th><?php echo $this->Paginator->sort('Youtube','YouTube');?></th>
-    </tr>
-
-    <?php foreach ($ssindicais as $c_ssindicais): ?>
-
-        <?php // echo pr($c_ssindicais); ?>
-
+<div class="container">
+    <table class="table table-hover table-responsive table-striped">
+        <thead class="thead-light"><?php echo '<h1>Seções sindicais por: ' . $campo . '</h1>'; ?></thead>
         <tr>
-            <td><?php echo $this->Html->link($c_ssindicais["Ssindicai"]['Id'], 'ver/' . $c_ssindicais["Ssindicai"]['Id']); ?></td>
-            <td><?php echo $this->Html->link($c_ssindicais["Ssindicai"]['Secao_sindical'], 'ver/' . $c_ssindicais["Ssindicai"]['Id']); ?></td>
-            <td><?php echo $c_ssindicais["Ssindicai"]['Estado']; ?></td>
-            <td><?php echo $c_ssindicais["Ssindicai"]['Regional']; ?></td>
-            <td><?php echo $c_ssindicais["Ssindicai"]['Setor']; ?></td>
-            <td>
-                <?php
-                if (!empty($c_ssindicais["Ssindicai"]['Site'])) {
-                    echo $this->Html->link('Site', 'http://' . $c_ssindicais["Ssindicai"]['Site'], array(
-                                       'target'=>'_blank',
-                                       'escape'=>false));
-                } else {
-                    '';
-                }
-                ?>
-            </td>
-            <td>
-                <?php
-                if (!empty($c_ssindicais["Ssindicai"]['Facebook'])) {
-                    echo $this->Html->link('Facebook', $c_ssindicais["Ssindicai"]['Facebook'], array(
-                                       'target'=>'_blank',
-                                       'escape'=>false));
-                } else {
-                    '';
-                }
-                ?>
-            </td>
-            <td>
-                <?php
-                if (!empty($c_ssindicais["Ssindicai"]['Youtube'])) {
-                    echo $this->Html->link('YouTube', $c_ssindicais["Ssindicai"]['Youtube'], array(
-                                       'target'=>'_blank',
-                                       'escape'=>false));
-                } else {
-                    '';
-                }
-                ?>
-            </td>
+            <th><?php echo $this->Paginator->sort('Id', 'Id'); ?></th>
+            <th><?php echo $this->Paginator->sort('Secao_sindical', 'Seção Sindical'); ?></th>
+            <th><?php echo $this->Paginator->sort('historicos.0.quantidade', 'Sindicalizados'); ?></th>
+            <th><?php echo $this->Paginator->sort('Estado', 'Estado'); ?></th>
+            <th><?php echo $this->Paginator->sort('Regional', 'Regional'); ?></th>
+            <th><?php echo $this->Paginator->sort('Setor', 'Setor'); ?></th>
+            <th><?php echo $this->Paginator->sort('Site', 'Site'); ?></th>
+            <th><?php echo $this->Paginator->sort('Facebook', 'Facebook'); ?></th>
+            <th><?php echo $this->Paginator->sort('Youtube', 'YouTube'); ?></th>
         </tr>
 
-    <?php endforeach; ?>
+        <?php foreach ($ssindicais as $c_ssindicais): ?>
 
-</table>
+            <?php // pr($c_ssindicais); ?>
+
+            <tr>
+                <td><?php echo $this->Html->link($c_ssindicais["Ssindical"]['Id'], 'ver/' . $c_ssindicais["Ssindical"]['Id']); ?></td>
+                <td><?php echo $this->Html->link($c_ssindicais["Ssindical"]['Secao_sindical'], 'ver/' . $c_ssindicais["Ssindical"]['Id']); ?></td>
+                <td style="text-align: right"><?php echo $sindicalizados = empty($c_ssindicais["historicos"]['0']['quantidade']) ? "" : $c_ssindicais["historicos"]['0']['quantidade']; ?></td>
+                <td><?php echo $c_ssindicais["Ssindical"]['Estado']; ?></td>
+                <td><?php echo $c_ssindicais["Ssindical"]['Regional']; ?></td>
+                <td><?php echo $c_ssindicais["Ssindical"]['Setor']; ?></td>
+                <td>
+                    <?php
+                    if (!empty($c_ssindicais["Ssindical"]['Site'])) {
+                        echo $this->Html->link('Site', 'http://' . $c_ssindicais["Ssindical"]['Site'], array(
+                            'target' => '_blank',
+                            'escape' => false));
+                    } else {
+                        '';
+                    }
+                    ?>
+                </td>
+                <td>
+                    <?php
+                    if (!empty($c_ssindicais["Ssindical"]['Facebook'])) {
+                        echo $this->Html->link('Facebook', $c_ssindicais["Ssindical"]['Facebook'], array(
+                            'target' => '_blank',
+                            'escape' => false));
+                    } else {
+                        '';
+                    }
+                    ?>
+                </td>
+                <td>
+                    <?php
+                    if (!empty($c_ssindicais["Ssindical"]['Youtube'])) {
+                        echo $this->Html->link('YouTube', $c_ssindicais["Ssindical"]['Youtube'], array(
+                            'target' => '_blank',
+                            'escape' => false));
+                    } else {
+                        '';
+                    }
+                    ?>
+                </td>
+            </tr>
+
+        <?php endforeach; ?>
+
+    </table>
+</div>

@@ -6,99 +6,102 @@ echo $this->element('submenu_ssindicais');
 $this->Html->link('Editar', 'editar/');
 ?>
 
-<?php
-echo "<div align = 'center'>";
+<div class="container">
 
-echo $this->Paginator->numbers();
+    <?php
+    echo "<div align = 'center'>";
 
-echo "<br>";
+    echo $this->Paginator->numbers();
 
-echo $this->Paginator->prev(
-        '« Anterior ', null, null, array('class' => 'disabled')
-);
-echo $this->Paginator->next(
-        ' Posterior »', null, null, array('class' => 'disabled')
-);
+    echo "<br>";
 
-echo "<br>";
+    echo $this->Paginator->prev(
+            '« Anterior ', null, null, array('class' => 'disabled')
+    );
+    echo $this->Paginator->next(
+            ' Posterior »', null, null, array('class' => 'disabled')
+    );
 
-echo $this->Paginator->counter();
+    echo "<br>";
 
-echo "</div>";
-?>
+    echo $this->Paginator->counter();
 
-<h1>Seções sindicais</h1>
+    echo "</div>";
+    ?>
 
-<table>
+    <h1>Seções sindicais</h1>
 
-    <?php foreach ($ssindicais as $c_ssindicais): ?>
-        <tr>
-            <td width="15%">Seção sindical</td>
-            <td><h1><?php echo $this->Html->link($c_ssindicais['Ssindicai']['Secao_sindical'], 'ver/' . $c_ssindicais['Ssindicai']['Id']); ?></h1></td>
-        </tr>
+    <table class="table table-hover table-responsive table-striped">
 
-        <tr>
-            <td>Seção sindical por extenso</td>
-            <td><?php echo $c_ssindicais['Ssindicai']['Secao_sindical_extenso']; ?></td>
-        </tr>
+        <?php foreach ($ssindicais as $c_ssindicais): ?>
+            <tr>
+                <td width="15%">Seção sindical</td>
+                <td><h1><?php echo $this->Html->link($c_ssindicais['Ssindical']['Secao_sindical'], 'ver/' . $c_ssindicais['Ssindical']['Id']); ?></h1></td>
+            </tr>
 
-        <tr>
-            <td>Estado</td>
-            <td><?php echo $this->Html->link($c_ssindicais['Ssindicai']['Estado'], 'seleciona/estado/' . $c_ssindicais['Ssindicai']['Estado']); ?></td>
-        </tr>
+            <tr>
+                <td>Seção sindical por extenso</td>
+                <td><?php echo $c_ssindicais['Ssindical']['Secao_sindical_extenso']; ?></td>
+            </tr>
 
-        <tr>
-            <td>Regional</td>
-            <td><?php echo $this->Html->link($c_ssindicais['Ssindicai']['Regional'], 'seleciona/regional/' . $c_ssindicais['Ssindicai']['Regional']); ?></td>
-        </tr>
+            <tr>
+                <td>Estado</td>
+                <td><?php echo $this->Html->link($c_ssindicais['Ssindical']['Estado'], 'seleciona/estado/' . $c_ssindicais['Ssindical']['Estado']); ?></td>
+            </tr>
 
-        <tr>
-            <td>Setor</td>
-            <td><?php echo $this->Html->link($c_ssindicais['Ssindicai']['Setor'], 'seleciona/setor/' . $c_ssindicais['Ssindicai']['Setor']); ?></td>
-        </tr>
+            <tr>
+                <td>Regional</td>
+                <td><?php echo $this->Html->link($c_ssindicais['Ssindical']['Regional'], 'seleciona/regional/' . $c_ssindicais['Ssindical']['Regional']); ?></td>
+            </tr>
 
-        <tr>
-            <td>Site</td>
-            <td><?php
-                echo $this->Html->link($c_ssindicais['Ssindicai']['Site'], 'http://' . $c_ssindicais['Ssindicai']['Site'], array(
+            <tr>
+                <td>Setor</td>
+                <td><?php echo $this->Html->link($c_ssindicais['Ssindical']['Setor'], 'seleciona/setor/' . $c_ssindicais['Ssindical']['Setor']); ?></td>
+            </tr>
+
+            <tr>
+                <td>Site</td>
+                <td><?php
+            echo $this->Html->link($c_ssindicais['Ssindical']['Site'], 'http://' . $c_ssindicais['Ssindical']['Site'], array(
+                'target' => '_blank',
+                'escape' => false));
+            ?></td>
+            </tr>
+
+            <!--
+            <tr>
+                <td>Pulsefeed</td>
+                <td><?php // echo $c_ssindicais['Ssindicai']['Pulsefeed'];    ?></td>
+            </tr>        
+        //-->
+
+            <tr>
+                <td>Facebook</td>
+                <td><?php
+                echo $this->Html->link($c_ssindicais['Ssindical']['Facebook'], $c_ssindicais['Ssindical']['Facebook'], array(
                     'target' => '_blank',
                     'escape' => false));
-                ?></td>
-        </tr>
+            ?></td>
+            </tr>
 
-        <!--
-        <tr>
-            <td>Pulsefeed</td>
-            <td><?php // echo $c_ssindicais['Ssindicai']['Pulsefeed'];   ?></td>
-        </tr>        
-    //-->
-
-        <tr>
-            <td>Facebook</td>
-            <td><?php
-                echo $this->Html->link($c_ssindicais['Ssindicai']['Facebook'], $c_ssindicais['Ssindicai']['Facebook'], array(
+            <tr>
+                <td>YouTube</td>
+                <td><?php
+                echo $this->Html->link($c_ssindicais['Ssindical']['Youtube'], $c_ssindicais['Ssindical']['Youtube'], array(
                     'target' => '_blank',
                     'escape' => false));
-                ?></td>
-        </tr>
+            ?></td>
+            </tr>
 
-        <tr>
-            <td>YouTube</td>
-            <td><?php
-                echo $this->Html->link($c_ssindicais['Ssindicai']['Youtube'], $c_ssindicais['Ssindicai']['Youtube'], array(
-                    'target' => '_blank',
-                    'escape' => false));
-                ?></td>
-        </tr>
-
-        <tr>
-            <td>Observações</td>
-            <td><?php echo $c_ssindicais['Ssindicai']['Observacoes']; ?></td>
-        </tr>
+            <tr>
+                <td>Observações</td>
+                <td><?php echo $c_ssindicais['Ssindical']['Observacoes']; ?></td>
+            </tr>
 
 
-        <link rel="import" href="<?php echo 'http://' . $c_ssindicais['Ssindicai']['Site']; ?>">
+            <link rel="import" href="<?php echo 'http://' . $c_ssindicais['Ssindical']['Site']; ?>">
 
-    <?php endforeach; ?>
+        <?php endforeach; ?>
 
-</table>
+    </table>
+</div>

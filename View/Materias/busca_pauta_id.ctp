@@ -1,46 +1,48 @@
-<?php // pr($materias); ?>
-<?php // pr($pauta_id);   ?>
-<?php // pr($pautas);   ?>
-<?php // pr($pauta_titulo);   ?>
+<?php // pr($materias);  ?>
+<?php // pr($pauta_id);    ?>
+<?php // pr($pautas);    ?>
+<?php // pr($pauta_titulo);    ?>
 
-<table>
-    <tr>
-        <th>
-            Data
-        </th>
-        <th>
-            Pauta
-        </th>
-        <th>
-            Situação
-        </th>
-    </tr>
-    <?php
-    if (isset($materias)):
-        foreach ($materias as $c_materia):
-            ?>  
-            <tr>
-                <td>
-                    <?php echo $c_materia['Materia']['data']; ?>
-                </td>
-                <td>
-                    <?php echo $this->Html->link($c_materia['Materia']['titulo'], 'ver/' . $c_materia['Materia']['titulo']); ?>
-                </td>
-                <td>
-                    <?php
-                    $quantidade = count($c_materia['Observacoe']) - 1;
-                    // echo $quantidade;
-                    if ($quantidade > 0):
-                        echo ($c_materia['Observacoe'][$quantidade]['observacoes']);
-                    endif;
-                    ?>
-                </td>
-            </tr>
-            <?php
-        endforeach;
-    endif;
-    ?>
-</table>
+<div class="container">
+    <table class="table table-hover table-responsive table-responsive">
+        <tr>
+            <th>
+                Data
+            </th>
+            <th>
+                Pauta
+            </th>
+            <th>
+                Situação
+            </th>
+        </tr>
+        <?php
+        if (isset($materias)):
+            foreach ($materias as $c_materia):
+                ?>  
+                <tr>
+                    <td>
+                        <?php echo $c_materia['Materia']['data']; ?>
+                    </td>
+                    <td>
+                        <?php echo $this->Html->link($c_materia['Materia']['titulo'], 'ver/' . $c_materia['Materia']['titulo']); ?>
+                    </td>
+                    <td>
+                        <?php
+                        $quantidade = count($c_materia['Observacoe']) - 1;
+                        // echo $quantidade;
+                        if ($quantidade > 0):
+                            echo ($c_materia['Observacoe'][$quantidade]['observacoes']);
+                        endif;
+                        ?>
+                    </td>
+                </tr>
+                <?php
+            endforeach;
+        endif;
+        ?>
+    </table>
+</div>
 
 <?php
 echo $this->Form->create('Materia', array('type' => 'file', array('url' => 'add')));
@@ -71,5 +73,4 @@ echo $this->Form->input('Tag', array(
         )
 );
 echo $this->Form->end('Salvar');
-
 ?>

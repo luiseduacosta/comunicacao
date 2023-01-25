@@ -11,11 +11,11 @@
     div.submenusuperior {
         display: inline-block;
     }
-    
+
     div.subsubmenusuperior {
         display: inline-block;
     }
-    
+
     .celular {
         position: absolute;
         visibility: hidden;
@@ -82,10 +82,10 @@
         display: none;
     }
 
-    .aba { 
+    .aba {
         border: 2px solid black;
         display: inline-block;
-        width: 100px;
+        width: 80px;
         height: 20px; 
         border-top-right-radius: 10px;
         border-top-left-radius: 10px;
@@ -107,7 +107,7 @@
         color: #003d4c;
         border: 2px solid black;
         display: inline-block;
-        width: 100px;
+        width: 80px;
         height: 20px; 
         border-top-right-radius: 10px;
         border-top-left-radius: 10px;

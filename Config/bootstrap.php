@@ -109,3 +109,6 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
+Inflector::rules('plural', array('irregular' => array('ssindical' => 'ssindicais')));
+Inflector::rules('singular', array('irregular' => array('ssindicais' => 'ssindical')));

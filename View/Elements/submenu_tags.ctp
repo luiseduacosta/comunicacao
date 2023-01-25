@@ -1,4 +1,8 @@
 <div class="submenu">
-    <?php echo $this->Html->link('Listar','index/', array('class' => 'aba')); ?>
-    <?php echo $this->Html->link('Inserir','add/', array('class' => 'aba')); ?>
+    <nav class="navbar navbar-light bg-light">
+        <ul class="nav nav-pills">
+            <?php echo $this->Html->link('Listar', 'index/', array('class' => 'nav-link')); ?>
+            <?php echo $this->Html->link('Inserir', 'add/', array('class' => 'nav-link')); ?>
+        </ul>
+    </nav>
 </div>

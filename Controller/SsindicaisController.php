@@ -5,11 +5,11 @@ class SsindicaisController extends AppController {
     public $helpers = array('Html', 'Form');
     public $name = 'Ssindicais';
     public $paginate = array('limit' => 10,
-        'order' => array('Ssindicai.Secao_sindical' => 'ASC')
+        'order' => array('Ssindical.Secao_sindical' => 'ASC')
     );
 
     function beforeFilter() {
-        $this->Auth->allow(array('index', 'ver', 'vercada', 'vercadasite', 'regionais', 'estados', 'sectores', 'seleciona'));
+        $this->Auth->allow(array('index', 'tabla', 'ver', 'vercada', 'vercadasite', 'regionais', 'estados', 'sectores', 'seleciona'));
     }
 
     public function index() {
@@ -22,11 +22,38 @@ class SsindicaisController extends AppController {
         // echo $campo . " " . $valor;
 
         if (!empty($campo)) {
-            $this->set('ssindicais', $this->paginate('Ssindicai', array($campo => $valor)));
+            $this->set('ssindicais', $this->Ssindical->find('all', array($campo => $valor)));
         } else {
-            $this->set('ssindicais', $this->paginate('Ssindicai')
+            $this->set('ssindicais', $this->Ssindical->find('all')
             );
         }
+    }
+
+    public function tabla() {
+
+        if (isset($this->request->params['pass'][0])) {
+            $campo = $this->request->params['pass'][0];
+            $valor = $this->request->params['pass'][1];
+        }
+
+        $this->Ssindical->contain(['historicos'
+            => ['order' => 'id DESC',
+                'limit' => 1],
+        ]);
+
+        // $valor = 'ADUA';
+        if (isset($valor) && !empty($valor)):
+            $options = ['Secao_sindical LIKE' => '%' . $valor . '%'];
+            $ssindicais = $this->Ssindical->find('all',
+                    ['conditions' => $options]);
+        else:
+            $ssindicais = $this->Ssindical->find('all');
+        endif;
+
+        $this->set('ssindicais', $ssindicais);
+        // pr($ssindicais);
+        // $this->autoRender = false;
+        // die();
     }
 
     public function vercada() {
@@ -34,46 +61,46 @@ class SsindicaisController extends AppController {
         $this->paginate = array(
             'limit' => 1,
             'order' => array(
-                'Ssindicai.Secao_sindical' => 'ASC')
+                'Ssindical.Secao_sindical' => 'ASC')
         );
 
-        $this->set('ssindicais', $this->paginate('Ssindicai'));
+        $this->set('ssindicais', $this->paginate('Ssindical'));
     }
 
     public function vercadasite() {
 
         $this->paginate = array(
-            'conditions' => array('Ssindicai.site != ""'),
+            'conditions' => array('Ssindical.site != ""'),
             'limit' => 1,
             'order' => array(
-                'Ssindicai.Secao_sindical' => 'ASC')
+                'Ssindical.Secao_sindical' => 'ASC')
         );
 
-        $this->set('ssindicais', $this->paginate('Ssindicai'));
+        $this->set('ssindicais', $this->paginate('Ssindical'));
     }
 
     public function vercadafacebook() {
 
         $this->paginate = array(
-            'conditions' => array('Ssindicai.Facebook != ""'),
+            'conditions' => array('Ssindical.Facebook != ""'),
             'limit' => 1,
             'order' => array(
-                'Ssindicai.Secao_sindical' => 'ASC')
+                'Ssindical.Secao_sindical' => 'ASC')
         );
 
-        $this->set('ssindicais', $this->paginate('Ssindicai'));
+        $this->set('ssindicais', $this->paginate('Ssindical'));
     }
 
     public function vercadayoutube() {
 
         $this->paginate = array(
-            'conditions' => array('Ssindicai.Youtube != ""'),
+            'conditions' => array('Ssindical.Youtube != ""'),
             'limit' => 1,
             'order' => array(
-                'Ssindicai.Secao_sindical' => 'ASC')
+                'Ssindical.Secao_sindical' => 'ASC')
         );
 
-        $this->set('ssindicais', $this->paginate('Ssindicai'));
+        $this->set('ssindicais', $this->paginate('Ssindical'));
     }
 
     public function seleciona() {
@@ -83,7 +110,7 @@ class SsindicaisController extends AppController {
         $campo = $this->request->params['pass'][0];
         $valor = $this->request->params['pass'][1];
 
-        $this->set('ssindicais', $this->Ssindicai->find('all', array(
+        $this->set('ssindicais', $this->Ssindical->find('all', array(
                     'conditions' => array($campo => $valor)
         )));
 
@@ -92,7 +119,7 @@ class SsindicaisController extends AppController {
         );
 
         $this->paginate = $options;
-        $ssindicais = $this->paginate('Ssindicai');
+        $ssindicais = $this->paginate('Ssindical');
         $this->set('ssindicais', $ssindicais);
 
         $this->set('campo', $campo);
@@ -104,16 +131,13 @@ class SsindicaisController extends AppController {
             throw new NotFoundException(__('Dígito inválido'));
         }
 
-        $ssindicais = $this->Ssindicai->findById($id);
+        $ssindicais = $this->Ssindical->findById($id);
 
-        if (!$ssindicais) {
-            throw new NotFoundException(__('Dígito inválido'));
-        }
-// echo debug($this->request->data);
-        if ($this->request->is(array('ssindicai', 'post'))) {
-// die();
-            $this->Ssindicai->id = $id;
-            if ($this->Ssindicai->save($this->request->data)) {
+        if ($this->request->is(array('post', 'put'))) {
+
+            $this->Ssindical->id = $id;
+
+            if ($this->Ssindical->save($this->request->data)) {
                 $this->Flash->success(__('Registro atualizado'));
                 return $this->redirect(array('action' => 'ver/' . $id));
             }
@@ -128,15 +152,15 @@ class SsindicaisController extends AppController {
     public function ver($id = NULL) {
 
         if (!$id) {
-            throw new NotFoundException(__('Númeroinválido'));
+            throw new NotFoundException(__('Número inválido'));
         }
 
-        $this->set('ssindicai', $this->Ssindicai->findById($id));
+        $this->set('ssindical', $this->Ssindical->findById($id));
     }
 
     public function excluir($id = NULL) {
 
-        if ($this->Ssindicai->delete($id)) {
+        if ($this->Ssindical->delete($id)) {
             $this->Flash->success(__('Registo excluído'));
         } else {
             $this->Flash->error(__('Registro NÃO foi excluído'));
@@ -149,11 +173,10 @@ class SsindicaisController extends AppController {
 
         if (!empty($this->request->data)) {
 
-            if ($this->Ssindicai->save($this->request->data)) {
+            if ($this->Ssindical->save($this->request->data)) {
                 $this->Flash->success(__('Dados inseridos!'));
-// $this->Ssindicai->getLastInsertId();
-// $this->redirect(array('action' => 'index'));
-                $this->redirect(array('action' => 'ver/', $this->Ssindicai->getLastInsertId()));
+
+                $this->redirect(array('action' => 'ver/', $this->Ssindical->getLastInsertId()));
             }
             $this->Flash->error(__('Erro: não foi inserido o novo registro'));
         }
@@ -162,36 +185,36 @@ class SsindicaisController extends AppController {
     public function regionais() {
 
         $options = array(
-            'fields' => array('DISTINCT Ssindicai.Regional as Regional',
+            'fields' => array('DISTINCT Ssindical.Regional as Regional',
                 'count(regional) AS quantidade'),
             'group' => array('Regional'),
             'order' => array('Regional ASC')
         );
-        $this->Ssindicai->virtualFields['quantidade'] = 'quantidade';
+        $this->Ssindical->virtualFields['quantidade'] = 'quantidade';
         $this->paginate = $options;
-        $regionais = $this->paginate('Ssindicai');
+        $regionais = $this->paginate('Ssindical');
         $this->set('regionais', $regionais);
     }
 
     public function estados() {
 
         $options = array(
-            'fields' => array('DISTINCT Ssindicai.Estado',
+            'fields' => array('DISTINCT Ssindical.Estado',
                 'count(Estado) AS quantidade'),
             'group' => array('Estado'),
             'order' => array('Estado ASC'),
             'limit' => '30'
         );
-        $this->Ssindicai->virtualFields['quantidade'] = 'quantidade';
+        $this->Ssindical->virtualFields['quantidade'] = 'quantidade';
         $this->paginate = $options;
-        $estados = $this->paginate('Ssindicai');
+        $estados = $this->paginate('Ssindical');
         $this->set('estados', $estados);
     }
 
     public function sectores() {
 
-        $this->set('sectores', $this->Ssindicai->find('all', array(
-                    'fields' => array('DISTINCT Ssindicai.Setor',
+        $this->set('sectores', $this->Ssindical->find('all', array(
+                    'fields' => array('DISTINCT Ssindical.Setor',
                         'count(setor) AS quantidade'),
                     'group' => array('Setor'),
                     'order' => array('Setor ASC'),

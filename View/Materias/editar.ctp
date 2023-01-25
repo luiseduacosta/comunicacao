@@ -1,22 +1,22 @@
-<?php // debug($this->data); ?>
+<?php// debug($this->data);  ?>
 
 <?php echo $this->Html->script('ckeditor/ckeditor', array('inline' => false)); ?>
 
 <script type="text/javascript">
     function contacarateres() {
-         var x = document.getElementById('MateriaTitulo');
-         var n = x.value.length;
-         document.getElementById("conta").innerHTML = n;
+        var x = document.getElementById('MateriaTitulo');
+        var n = x.value.length;
+        document.getElementById("conta").innerHTML = n;
     }
 </script>
 
 <?php
-
 echo $this->element('submenu_materias');
 ?>
 
-<?php
+<div class="container">
 
+<?php
 echo $this->Form->create('Materia', array('type' => 'file'));
 
 echo $this->Form->input('Materia.titulo', array('label' => "Título <span id='conta'></span>", 'onkeyup' => 'javascript:contacarateres()'));
@@ -25,7 +25,7 @@ echo $this->Form->textarea('Materia.conteudo', array('class' => 'ckeditor'));
 
 echo $this->Form->input('Materia.data');
 
-echo $this->Form->input('Materia.informandes', array('type' => 'checkbox'));
+echo $this->Form->input('Materia.informandes', array('type' => 'checkbox', 'inputDefaults' => array('div' => false)));
 
 if (!empty($this->data['Materia']['anexo'])):
     $anexos = explode(',', $this->data['Materia']['anexo']);
@@ -39,7 +39,7 @@ else:
 endif;
 
 if (!empty($this->data['Observacoe'])) {
-    echo "<table>";
+    echo "<table class='table'>";
     foreach ($this->data['Observacoe'] as $c_observacoe) {
         // debug($c_observacoe);
         echo "<tr>";
@@ -55,6 +55,7 @@ if (!empty($this->data['Observacoe'])) {
   echo $this->Form->input('Observacoe.observacoes', array('type' => 'textarea', 'class' => 'ckeditor'));
   echo $this->Form->input('Observacoe.autor', array('type' => 'text'));
  */
+
 $c_selecao = NULL;
 if (isset($tags_selecionadas)) {
     foreach ($tags_selecionadas as $c_tag):
@@ -75,5 +76,5 @@ echo $this->Form->input('Tag', array(
 
 echo $this->Form->input('Materia.id', array('type' => 'hidden'));
 echo $this->Form->end('Salvar');
-
 ?>
+</div>

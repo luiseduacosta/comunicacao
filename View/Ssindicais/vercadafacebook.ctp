@@ -7,6 +7,8 @@ echo $this->element('submenu_ssindicais');
 // echo $this->element('submenu_vercada');
 ?>
 
+<div class="container">
+
 <?php
 echo "<div align = 'center'>";
 
@@ -34,18 +36,20 @@ echo "</div>";
         
         <h1>
             <?php echo $this->Html->link('Ir para registro || ', 'ver/' . $c_ssindicais['Ssindicai']['Id']); ?>
-            <?php echo $this->Html->link($c_ssindicais['Ssindicai']['Facebook'], $c_ssindicais['Ssindicai']['Facebook'], array('target' => '_blank',
+            <?php echo $this->Html->link($c_ssindicais['Ssindical']['Facebook'], $c_ssindicais['Ssindical']['Facebook'], array('target' => '_blank',
         'escape' => false));
         ?></h1>
-        <object type="text/html" data="http://<?php echo $c_ssindicais['Ssindicai']['Facebook']; ?>" 
+        <object type="text/html" data="http://<?php echo $c_ssindicais['Ssindical']['Facebook']; ?>" 
                 width="1000" height="1200" typemustmatch>
         </object>
         
         
-        <iframe width='1000' height='1200' frameborder='0' src='http://<?php echo $c_ssindicais['Ssindicai']['Facebook']; ?>'>
+        <iframe width='1000' height='1200' frameborder='0' src='http://<?php echo $c_ssindicais['Ssindical']['Facebook']; ?>'>
             
         </iframe>
         
     </div>
 
 <?php endforeach; ?>
+
+</div>

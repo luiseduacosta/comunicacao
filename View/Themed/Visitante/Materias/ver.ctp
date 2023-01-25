@@ -81,9 +81,16 @@ echo $this->element('submenu_materias');
         <td width = 8%>Tag</td>
 
         <td>
+            <?php $tamanho = sizeof($materias['Tag']); ?>
+            <?php $i = 1; ?> 
             <?php foreach ($materias['Tag'] as $tag): ?>        
-                <?php echo $tag['gt_setor']; ?>
+                <?php echo trim($tag['gt_setor']); ?>
+                <?php if ($i < $tamanho and $i < $tamanho - 1): ?>
                 <?php echo ", "; ?>
+                <?php elseif ($i < $tamanho and $i == $tamanho - 1): ?>
+                <?php echo "e "; ?>
+                <?php endif; ?>
+                <?php $i++; ?>
             <?php endforeach; ?>            
         </td>
 

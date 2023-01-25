@@ -6,6 +6,8 @@
 echo $this->element('submenu_materias');
 ?>
 
+<div class="container">
+
 <?php
 echo "<div align = 'center'>";
 
@@ -30,7 +32,7 @@ echo "</div>";
 
 <h1>Matérias</h1>
 
-<table>
+<table class="table table-hover table-responsive table-striped">
     <?php foreach ($materias as $c_materia): ?>
         <tr>
             <td>Título</td>
@@ -80,3 +82,4 @@ echo "</div>";
 
     <?php endforeach; ?>
 </table>
+</div>

@@ -1,6 +1,6 @@
 <?php
 // if ($materias):
-    // pr($materias);
+// pr($materias);
 // endif;
 ?>
 
@@ -8,28 +8,31 @@
 echo $this->element('submenu_materias');
 ?>
 
-<?php if (isset($materias)): ?>
+<div class="container">
 
-<h1>Busca: <?php echo $expressao; ?></h1>
+    <?php if (isset($materias)): ?>
 
-<table>
+        <h1>Busca: <?php echo $expressao; ?></h1>
 
-    <?php foreach ($materias as $c_materia): ?>
-    
-    <tr>
-        <td><?php echo $this->Html->link($c_materia['Materia']['titulo'], 'ver/' . $c_materia['Materia']['id']); ?></td>
-    </tr>
+        <table>
 
-    <?php endforeach; ?>
+            <?php foreach ($materias as $c_materia): ?>
 
-</table>
+                <tr>
+                    <td><?php echo $this->Html->link($c_materia['Materia']['titulo'], 'ver/' . $c_materia['Materia']['id']); ?></td>
+                </tr>
 
-<?php else: ?>
+            <?php endforeach; ?>
 
-    <h1>Busca por conetúdo da matéria</h1>
+        </table>
 
-    <?php echo $this->Form->create('Materia'); ?>
-    <?php echo $this->Form->input('conteudo', array('label' => 'Digite a palavra ou expressão')); ?>
-    <?php echo $this->Form->end('Confirma'); ?>
+    <?php else: ?>
 
-<?php endif; ?>
+        <h1>Busca por conetúdo da matéria</h1>
+
+        <?php echo $this->Form->create('Materia'); ?>
+        <?php echo $this->Form->input('conteudo', array('label' => 'Digite a palavra ou expressão')); ?>
+        <?php echo $this->Form->end('Confirma'); ?>
+
+    <?php endif; ?>
+</div>

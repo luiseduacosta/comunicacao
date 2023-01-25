@@ -1,5 +1,5 @@
 <?php
-echo $this->element('submenu_pautas');
+echo $this->element('submenu_tags');
 ?>
 
 <h1>Inserir pauta</h1>

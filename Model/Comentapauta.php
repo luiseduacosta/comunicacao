@@ -4,6 +4,7 @@ class Comentapauta extends AppModel {
 
     public $name = 'Comentapauta';
     public $useTable = 'comentapautas';
+    public $actsAs = array('Containable');
     public $belongsTo = array('Pauta'
         => array(
             'className' => 'Pauta',

@@ -19,3 +19,5 @@ Publicar o InformAndes em separado do blogue
 DICA!
 $log = $this->Votacao->getDataSource()->getLog(false, false);
 debug($log);
+
+2/4/2019

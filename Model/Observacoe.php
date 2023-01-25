@@ -4,6 +4,7 @@ class Observacoe extends AppModel {
 
     public $name = 'Observacoe';
     public $useTable = 'observacoes';
+    public $actsAs = array('Containable');
     public $belongsTo = array('Materia'
         => array(
             'className' => 'Materia',
