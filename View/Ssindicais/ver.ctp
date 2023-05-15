@@ -8,10 +8,19 @@ echo $this->element('submenu_ssindicais');
 
 <div class="container">
 
-    <?php
-    echo $this->Html->link('Editar', 'editar/' . $ssindical['Ssindical']['Id'], array('class' => 'aba'));
-    echo $this->Html->link('Excluir', 'excluir/' . $ssindical['Ssindical']['Id'], array('class' => 'aba'));
-    ?>
+    <nav class="navbar navbar-light bg-light" role="navigation">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <?php echo $this->Html->link('Editar', 'editar/' . $ssindical['Ssindical']['Id'], array('class' => 'nav-link')); ?>
+            </li>
+            <li class="nav-item">
+                <?php echo $this->Html->link('Excluir', 'excluir/' . $ssindical['Ssindical']['Id'], array('class' => 'nav-link')); ?>
+            </li>
+            <li class="nav-item">
+                <?php echo $this->Html->link('Novo histórico', ['controller' => 'historicos', 'action' => 'add', $ssindical['Ssindical']['Id']], array('class' => 'nav-link')); ?>
+            </li>
+        </ul>
+    </nav>
 
     <table class="table table-hover table-responsive table-striped">
         <tr>
@@ -30,6 +39,8 @@ echo $this->element('submenu_ssindicais');
             <td>Sindicalizados</td>
             <td>
                 <?php echo $sindicalizados = isset($ssindical['historicos'][0]['quantidade']) ? $this->Html->link($ssindical['historicos'][0]['quantidade'], ['controller' => 'historicos', 'action' => 'view', $ssindical['historicos'][0]['id']]) : NULL; ?>
+                <?php echo $sindicalizados = isset($ssindical['historicos'][0]['evento']) ? $ssindical['historicos'][0]['evento'] : NULL; ?>
+                <?php echo $sindicalizados = isset($ssindical['historicos'][0]['ano']) ? $ssindical['historicos'][0]['ano'] : NULL; ?>   
             </td>
         </tr>
 
@@ -90,6 +101,7 @@ echo $this->element('submenu_ssindicais');
             </td>
         </tr>
         <tr>
+            <td>Observações</td>
             <td>
                 <?php echo $ssindical['Ssindical']['Observacoes']; ?>
             </td>

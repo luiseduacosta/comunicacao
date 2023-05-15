@@ -22,10 +22,11 @@ class SsindicaisController extends AppController {
         // echo $campo . " " . $valor;
 
         if (!empty($campo)) {
+            $this->Ssindical->contain(['historicos' => ['order' => ['id' => 'desc']]]);
             $this->set('ssindicais', $this->Ssindical->find('all', array($campo => $valor)));
         } else {
-            $this->set('ssindicais', $this->Ssindical->find('all')
-            );
+            $this->Ssindical->contain(['historicos' => ['order' => ['id' => 'desc']]]);
+            $this->set('ssindicais', $this->Ssindical->find('all'));
         }
     }
 
@@ -37,7 +38,7 @@ class SsindicaisController extends AppController {
         }
 
         $this->Ssindical->contain(['historicos'
-            => ['order' => 'id DESC',
+            => ['order' => ['id' => 'DESC'],
                 'limit' => 1],
         ]);
 
@@ -94,10 +95,10 @@ class SsindicaisController extends AppController {
     public function vercadayoutube() {
 
         $this->paginate = array(
-            'conditions' => array('Ssindical.Youtube != ""'),
+            'conditions' => ['Ssindical.Youtube != ""'],
             'limit' => 1,
-            'order' => array(
-                'Ssindical.Secao_sindical' => 'ASC')
+            'order' => [
+                'Ssindical.Secao_sindical' => 'ASC']
         );
 
         $this->set('ssindicais', $this->paginate('Ssindical'));
@@ -154,7 +155,7 @@ class SsindicaisController extends AppController {
         if (!$id) {
             throw new NotFoundException(__('Número inválido'));
         }
-
+        $this->Ssindical->contain(['historicos' => ['order' => ['id' => 'desc'], 'limit' => 1]]);
         $this->set('ssindical', $this->Ssindical->findById($id));
     }
 
@@ -176,7 +177,7 @@ class SsindicaisController extends AppController {
             if ($this->Ssindical->save($this->request->data)) {
                 $this->Flash->success(__('Dados inseridos!'));
 
-                $this->redirect(array('action' => 'ver/', $this->Ssindical->getLastInsertId()));
+                $this->redirect(array('action' => 'ver/', $this->Ssindical->getLastInsertID()));
             }
             $this->Flash->error(__('Erro: não foi inserido o novo registro'));
         }

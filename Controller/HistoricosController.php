@@ -25,7 +25,7 @@ class HistoricosController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Historico->contain(['Ssindical' => ['order' => 'Historico.id DESC']]);
+        $this->Historico->contain(['Ssindical' => ['order' => 'Ssindical.Secao_sindical ASC']]);
         $this->set('historicos', $this->Paginator->paginate());
     }
 
@@ -49,12 +49,28 @@ class HistoricosController extends AppController {
      *
      * @return void
      */
-    public function add() {
+    public function add($id) {
+
+        if (isset($id) && !empty($id)):
+            $this->set('ssindical_id', $id);
+        endif;
+
         if ($this->request->is('post')) {
+            // Verifico se já foi cadastrado o evento
+            $evento = $this->Historico->find('first', [
+                'conditions' => [
+                    'Historico.evento' => $this->request->data['Historico']['evento'],
+                    'Historico.ssindical_id' => $this->request->data['Historico']['ssindical_id']]
+            ]);
+            if ($evento):
+                $this->Flash->error(__('Evento já foi cadastrado'));
+                return $this->redirect(['action' => 'view', $evento['Historico']['id']]);
+            endif;
+
             $this->Historico->create();
             if ($this->Historico->save($this->request->data)) {
-                $this->Flash->success(__('The historico has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+                $this->Flash->success(__('Registro inserido!'));
+                return $this->redirect(['action' => 'view', $this->Historico->getInsertID()]);
             } else {
                 $this->Flash->error(__('The historico could not be saved. Please, try again.'));
             }
@@ -77,7 +93,7 @@ class HistoricosController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Historico->save($this->request->data)) {
                 $this->Flash->success(__('The historico has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(['action' => 'view', $id]);
             } else {
                 $this->Flash->error(__('The historico could not be saved. Please, try again.'));
             }

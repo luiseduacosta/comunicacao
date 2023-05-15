@@ -29,7 +29,6 @@
             <?php echo $this->Html->link('Inserir', 'add/', array('class' => 'nav-link')); ?>'
             <?php echo "</li>"; ?>
 
-
         </ul>
     </nav>
 </div>
