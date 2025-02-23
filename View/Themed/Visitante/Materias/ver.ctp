@@ -8,13 +8,13 @@ echo $this->element('submenu_materias');
 
 <!--
 <div class="subsubmenusuperior">
-    <?php echo $this->Html->link("Editar", "editar/" . $materias['Materia']['id'], array('class' => 'aba')); ?>
-    <?php echo $this->Html->link("Comentar", "comentar/" . $materias['Materia']['id'], array('class' => 'aba')); ?>
+    <?php echo $this->Html->link("Editar", "editar/" . $materias['Materia']['id'], ['class' => 'aba']); ?>
+    <?php echo $this->Html->link("Comentar", "comentar/" . $materias['Materia']['id'], ['class' => 'aba']); ?>
     <?php
     if ($materias['Materia']['publicar'] == 0):
-        echo $this->Html->link("Publicar", "publicar/id:" . $materias['Materia']['id'] . '/publicar:' . $materias['Materia']['publicar'], array('class' => 'aba'));
+        echo $this->Html->link("Publicar", "publicar/id:" . $materias['Materia']['id'] . '/publicar:' . $materias['Materia']['publicar'], ['class' => 'aba']);
     elseif (($materias['Materia']['publicar'] == 1)):
-        echo $this->Html->link("Despublicar", "publicar/id:" . $materias['Materia']['id'] . '/publicar:' . $materias['Materia']['publicar'], array('class' => 'aba'));
+        echo $this->Html->link("Despublicar", "publicar/id:" . $materias['Materia']['id'] . '/publicar:' . $materias['Materia']['publicar'], ['class' => 'aba']);
     endif;
     ?>
     <?php echo $this->Html->link('Excluir', 'excluir/' . $materias['Materia']['id'], array('confirm' => 'Confirma excluir este item?', 'class' => 'aba')); ?>

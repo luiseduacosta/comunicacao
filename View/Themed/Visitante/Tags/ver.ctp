@@ -7,7 +7,7 @@
 
 <!--
 <div class="subsubmenusuperior">
-<?php echo $this->Html->link("Editar tag", "editar/" . $tags['Tag']['id'], array('class' => 'aba')); ?>
+<?php echo $this->Html->link("Editar tag", "editar/" . $tags['Tag']['id'], ['class' => 'aba']); ?>
 <?php echo $this->Html->link("Excluir tag", "excluir/" . $tags['Tag']['id'], array('class' => 'aba', 'confirm' => 'Tem certeza')); ?>
 </div>
 //-->

@@ -12,17 +12,17 @@ echo $this->element('submenu_materias');
         <nav class="navbar navbar-light bg-light">
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <?php echo $this->Html->link("Editar", "editar/" . $materias['Materia']['id'], array('class' => 'nav-link')); ?>
+                    <?php echo $this->Html->link("Editar", "editar/" . $materias['Materia']['id'], ['class' => 'nav-link']); ?>
                 </li>
                 <li class="nav-item">
-                    <?php echo $this->Html->link("Comentar", "comentar/" . $materias['Materia']['id'], array('class' => 'nav-link')); ?>
+                    <?php echo $this->Html->link("Comentar", "comentar/" . $materias['Materia']['id'], ['class' => 'nav-link']); ?>
                 </li>
                 <li class="nav-item">
                     <?php
                     if ($materias['Materia']['publicar'] == 0):
-                        echo $this->Html->link("Publicar", "publicar/id:" . $materias['Materia']['id'] . '/publicar:' . $materias['Materia']['publicar'], array('class' => 'nav-link'));
+                        echo $this->Html->link("Publicar", "publicar/id:" . $materias['Materia']['id'] . '/publicar:' . $materias['Materia']['publicar'], ['class' => 'nav-link']);
                     elseif (($materias['Materia']['publicar'] == 1)):
-                        echo $this->Html->link("Despublicar", "publicar/id:" . $materias['Materia']['id'] . '/publicar:' . $materias['Materia']['publicar'], array('class' => 'nav-link'));
+                        echo $this->Html->link("Despublicar", "publicar/id:" . $materias['Materia']['id'] . '/publicar:' . $materias['Materia']['publicar'], ['class' => 'nav-link']);
                     endif;
                     ?>
                 </li>

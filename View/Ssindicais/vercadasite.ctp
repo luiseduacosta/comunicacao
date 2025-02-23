@@ -58,7 +58,7 @@ echo $this->element('submenu_ssindicais');
 
             </h1>
             <!--
-            <object type="text/html" data="http://<?php // echo $c_ssindicais['Ssindicai']['Site'];      ?>" 
+            <object type="text/html" data="http://<?php // echo $c_ssindicais['Ssindicai']['Site']; ?>" 
                     width="1000" height="1200" typemustmatch>
             </object>
             //-->

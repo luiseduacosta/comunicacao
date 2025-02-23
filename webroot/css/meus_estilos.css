@@ -25,16 +25,15 @@
     .aba { 
         border: 2px solid black;
         display: inline-block;
-        width: 170px;
-        height: 25px; 
+        width: 160px;
+        height: 30px; 
         border-top-right-radius: 15px;
         border-top-left-radius: 15px;
-        font-size: 85%;
+        font-size: 80%;
         text-align: center;
         background-color: #ffffff; 
         color: #003d4c;
-        padding: 1px 3px;
-
+        padding: 10px 5px 20px 10px;
     }
 
     .aba:hover {
@@ -50,10 +49,10 @@
         border: 2px solid black;
         display: inline-block;
         width: 160px;
-        height: 20px; 
+        height: 30px; 
         border-top-right-radius: 15px;
         border-top-left-radius: 15px;
-        padding: 3px 3px;
+        padding: 10px 5px 20x 10px;
     }
 
     .aba:visited {

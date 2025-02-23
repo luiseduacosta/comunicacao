@@ -1,5 +1,7 @@
 <?php
+
 // pr($ssindicais);
+
 ?>
 
 <script>
@@ -32,26 +34,26 @@
 
             initComplete: function () {
                 this.api()
-                        .columns([1, 3, 4, 5, 6, 7, 8, 9])
-                        .every(function () {
-                            var column = this;
-                            var select = $('<select class="form-control my-1"><option value=""></option></select>')
-                                    .appendTo($(column.header()))
-                                    .on('change', function () {
-                                        var val = $.fn.dataTable.util.escapeRegex($(this).val());
+                    .columns([1, 3, 4, 5, 6, 7, 8, 9])
+                    .every(function () {
+                        var column = this;
+                        var select = $('<select class="form-control my-1"><option value=""></option></select>')
+                            .appendTo($(column.header()))
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex($(this).val());
 
-                                        column.search(val ? '^' + val + '$' : '', true, false).draw();
-                                    });
+                                column.search(val ? '^' + val + '$' : '', true, false).draw();
+                            });
 
-                            column
-                                    .data()
-                                    .unique()
-                                    .sort()
-                                    .each(function (d, j) {
-                                        var val = $('<a/>').html(d).text();
-                                        select.append('<option value="' + val + '">' + val.substr(0, 25) + '</option>');
-                                    });
-                        });
+                        column
+                            .data()
+                            .unique()
+                            .sort()
+                            .each(function (d, j) {
+                                var val = $('<a/>').html(d).text();
+                                select.append('<option value="' + val + '">' + val.substr(0, 25) + '</option>');
+                            });
+                    });
             },
 
         });
@@ -82,13 +84,18 @@ echo $this->element('submenu_ssindicais');
         <tbody>
             <?php foreach ($ssindicais as $c_ssindicais): ?>
 
-                <?php // pr($c_ssindicais);  ?>
+                <?php // pr($c_ssindicais); ?>
 
                 <tr>
-                    <td><?php echo $this->Html->link($c_ssindicais["Ssindical"]['Id'], 'ver/' . $c_ssindicais["Ssindical"]['Id']); ?></td>
-                    <td><?php echo $this->Html->link($c_ssindicais["Ssindical"]['Secao_sindical'], 'ver/' . $c_ssindicais["Ssindical"]['Id']); ?></td>
-                    <td style="text-align: center"><?php echo $sindicalizados = !empty($c_ssindicais["historicos"]) ? $c_ssindicais["historicos"][0]['quantidade'] : NULL; ?></td>
-                    <td><?php echo $ano = isset($c_ssindicais["historicos"]['0']['ano']) ? $c_ssindicais["historicos"]['0']['ano'] : NULL; ?></td>
+                    <td><?php echo $this->Html->link($c_ssindicais["Ssindical"]['Id'], 'ver/' . $c_ssindicais["Ssindical"]['Id']); ?>
+                    </td>
+                    <td><?php echo $this->Html->link($c_ssindicais["Ssindical"]['Secao_sindical'], 'ver/' . $c_ssindicais["Ssindical"]['Id']); ?>
+                    </td>
+                    <td style="text-align: center">
+                        <?php echo $sindicalizados = !empty($c_ssindicais["historicos"]) ? $c_ssindicais["historicos"][0]['quantidade'] : NULL; ?>
+                    </td>
+                    <td><?php echo $ano = isset($c_ssindicais["historicos"]['0']['ano']) ? $c_ssindicais["historicos"]['0']['ano'] : NULL; ?>
+                    </td>
                     <td><?php echo $c_ssindicais["Ssindical"]['Estado']; ?></td>
                     <td><?php echo $c_ssindicais["Ssindical"]['Regional']; ?></td>
                     <td>
@@ -107,7 +114,8 @@ echo $this->element('submenu_ssindicais');
                         if (!empty($c_ssindicais["Ssindical"]['Site'])) {
                             echo $this->Html->link('Site', 'http://' . $c_ssindicais["Ssindical"]['Site'], array(
                                 'target' => '_blank',
-                                'escape' => false));
+                                'escape' => false
+                            ));
                         } else {
                             '';
                         }
@@ -118,7 +126,8 @@ echo $this->element('submenu_ssindicais');
                         if (!empty($c_ssindicais["Ssindical"]['Facebook'])) {
                             echo $this->Html->link('Facebook', $c_ssindicais["Ssindical"]['Facebook'], array(
                                 'target' => '_blank',
-                                'escape' => false));
+                                'escape' => false
+                            ));
                         } else {
                             '';
                         }
@@ -129,7 +138,8 @@ echo $this->element('submenu_ssindicais');
                         if (!empty($c_ssindicais["Ssindical"]['Youtube'])) {
                             echo $this->Html->link('YouTube', $c_ssindicais["Ssindical"]['Youtube'], array(
                                 'target' => '_blank',
-                                'escape' => false));
+                                'escape' => false
+                            ));
                         } else {
                             '';
                         }

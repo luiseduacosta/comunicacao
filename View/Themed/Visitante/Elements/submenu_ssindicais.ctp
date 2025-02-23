@@ -1,11 +1,11 @@
 <div class="submenusuperior">
-    <?php // echo $this->Html->link('Listar', 'index/', array('class' => 'aba')); ?>
-    <?php echo $this->Html->link('Ver cada', 'vercada/', array('class' => 'aba')); ?>
-    <?php echo $this->Html->link('Ver sites', 'vercadasite/', array('class' => 'aba')); ?>    
-    <?php echo $this->Html->link('Regionais', 'regionais/', array('class' => 'aba')); ?>
-    <?php echo $this->Html->link('Estados', 'estados/', array('class' => 'aba')); ?>
-    <?php echo $this->Html->link('Sectores', 'sectores/', array('class' => 'aba')); ?>
-    <?php // echo $this->Html->link('Inserir', 'add/', array('class' => 'aba')); ?>'
+    <?php // echo $this->Html->link('Listar', 'index/', ['class' => 'aba']); ?>
+    <?php echo $this->Html->link('Ver cada', 'vercada/', ['class' => 'aba']); ?>
+    <?php echo $this->Html->link('Ver sites', 'vercadasite/', ['class' => 'aba']); ?>    
+    <?php echo $this->Html->link('Regionais', 'regionais/', ['class' => 'aba']); ?>
+    <?php echo $this->Html->link('Estados', 'estados/', ['class' => 'aba']); ?>
+    <?php echo $this->Html->link('Sectores', 'sectores/', ['class' => 'aba']); ?>
+    <?php // echo $this->Html->link('Inserir', 'add/', ['class' => 'aba']); ?>'
 </div>
 <div class="celular">
     <select onchange="window.location.href = this.value" class="aba">

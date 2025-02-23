@@ -34,21 +34,21 @@ echo "</div>";
 
         <h1>
             <?php
-            echo $this->Html->link('Ir para registro', 'ver/' . $c_ssindicais['Ssindicai']['Id']);
+            echo $this->Html->link('Ir para registro', 'ver/' . $c_ssindicais['Ssindical']['Id']);
             echo " || ";
 
-            echo $this->Html->link($c_ssindicais['Ssindicai']['Site'], 'http://' . $c_ssindicais['Ssindicai']['Site'], array('target' => '_blank',
+            echo $this->Html->link($c_ssindicais['Ssindical']['Site'], 'http://' . $c_ssindicais['Ssindical']['Site'], array('target' => '_blank',
                 'escape' => false));
 
-            if (!empty($c_ssindicais['Ssindicai']['Facebook'])) {
+            if (!empty($c_ssindicais['Ssindical']['Facebook'])) {
                 echo " || ";
-                echo $this->Html->link('Facebook', $c_ssindicais['Ssindicai']['Facebook'], array('target' => '_blank',
+                echo $this->Html->link('Facebook', $c_ssindicais['Ssindical']['Facebook'], array('target' => '_blank',
                     'escape' => false));
             }
 
-            if (!empty($c_ssindicais['Ssindicai']['Youtube'])) {
+            if (!empty($c_ssindicais['Ssindical']['Youtube'])) {
                 echo " || ";
-                echo $this->Html->link('Youtube', $c_ssindicais['Ssindicai']['Youtube'], array('target' => '_blank',
+                echo $this->Html->link('Youtube', $c_ssindicais['Ssindical']['Youtube'], array('target' => '_blank',
                     'escape' => false));
             }
             ?>
@@ -56,12 +56,12 @@ echo "</div>";
 
         </h1>
         <!--
-        <object type="text/html" data="http://<?php // echo $c_ssindicais['Ssindicai']['Site'];     ?>" 
+        <object type="text/html" data="http://<?php // echo $c_ssindicais['Ssindicai']['Site'];     ?>"
                 width="1000" height="1200" typemustmatch>
         </object>
         //-->
         <iframe width='1000' height='1200' frameborder='0' 
-                src='http://<?php echo $c_ssindicais['Ssindicai']['Site']; ?>'>
+                src='http://<?php echo $c_ssindicais['Ssindical']['Site']; ?>'>
         </iframe>
     </div>
 

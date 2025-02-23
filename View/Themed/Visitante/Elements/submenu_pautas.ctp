@@ -1,7 +1,7 @@
 <div class = "submenusuperior">
-    <?php // echo $this->Html->link('Arquivadas','arquivadas/', array('class' => 'aba')); ?>
-    <?php echo $this->Html->link('Listar','index/', array('class' => 'aba')); ?>
-    <?php // echo $this->Html->link('Inserir','add/', array('class' => 'aba')); ?>
+    <?php // echo $this->Html->link('Arquivadas','arquivadas/', ['class' => 'aba']); ?>
+    <?php echo $this->Html->link('Listar','index/', ['class' => 'aba']); ?>
+    <?php // echo $this->Html->link('Inserir','add/', ['class' => 'aba']); ?>
 </div>
 
 <div class = "celular">

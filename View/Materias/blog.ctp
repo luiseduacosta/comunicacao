@@ -13,10 +13,10 @@
 
 <div class="container">
 
-<?php echo $this->Html->css('blog', null, array('inline' => false)); ?>
+    <?php echo $this->Html->css('blog', null, array('inline' => false)); ?>
 
     <?php
-// echo $this->element('submenu_materias') . "<br>";
+    // echo $this->element('submenu_materias') . "<br>";
     ?>
 
     <?php
@@ -80,18 +80,18 @@
             <div class='blog_top'>
                 <select onchange="window.location.href = this.value">
                     <option value="" selected="selected">Matérias por ano/mês</option>
-    <?php foreach ($datas as $c_anomes => $c_data): ?>
+                    <?php foreach ($datas as $c_anomes => $c_data): ?>
                         <option value=<?php echo '/comunicacao/Materias/blog/ano:' . substr($c_anomes, 0, 4) . '/mes:' . substr($c_anomes, 5, 2); ?>><?php echo substr($c_anomes, 0, 4) . ' do mês de ' . strftime("%B", strtotime("01-" . substr($c_anomes, 5, 2) . "-2000")); ?>
                         </option>
-    <?php endforeach; ?>
+                    <?php endforeach; ?>
                 </select>
 
                 <select onchange="window.location.href = this.value">
                     <option value="" selected="selected">Matérias por marcas</option>
-    <?php foreach ($tags as $c_tag): ?>
+                    <?php foreach ($tags as $c_tag): ?>
                         <option value=<?php echo '/comunicacao/Materias/blog' . '/mes:' . $mes . '/ano:' . $ano . '/tag:' . $c_tag['tags']['id']; ?>><?php echo $c_tag['tags']['gt_setor'] . ': ' . $c_tag[0]['q_tags']; ?>
                         </option>
-    <?php endforeach; ?>
+                    <?php endforeach; ?>
                 </select>
             </div>
 
@@ -101,65 +101,69 @@
 
             <div id='blog'>
 
-    <?php for ($i = 1; $i <= $q_noticias; $i++): ?>
+                <?php for ($i = 1; $i <= $q_noticias; $i++): ?>
                     <?php //echo ;   ?>
 
                     <table>
 
                         <tr style="color: #a00">
-                            <td><h1><?php echo $this->Html->link($c_nova_materia[$i]['Materia']['titulo'], 'ver/' . $c_nova_materia[$i]['Materia']['materia_id']); ?></h1></td>
+                             <td style="padding: 10px 10px 10px 10px">
+                                <h1><?php echo $this->Html->link($c_nova_materia[$i]['Materia']['titulo'], 'ver/' . $c_nova_materia[$i]['Materia']['materia_id']); ?>
+                                </h1>
+                            </td>
                         </tr>
                         <tr>
-                            <td><?php echo "Publicada em " . $this->Time->format($c_nova_materia[$i]['Materia']['data'], '%e de %B de %Y'); ?></td>
+                            <td style="padding: 10px 10px 10px 10px"><?php echo "Publicada em " . $this->Time->format($c_nova_materia[$i]['Materia']['data'], '%e de %B de %Y'); ?>
+                            </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td style="padding: 10px 10px 10px 10px">
                                 <p style="color: #a00">
 
-        <?php
-        $palavras = explode(" ", $c_nova_materia[$i]['Materia']['conteudo']);
-        echo "Palavras: " . count($palavras) . ". " . "Carateres: " . strlen($c_nova_materia[$i]['Materia']['conteudo']) . "<br>";
-        echo $this->text->truncate($c_nova_materia[$i]['Materia']['conteudo'], 1200, array(
-            'ellipsis' => $this->Html->link(" ...", 'ver/' . $c_nova_materia[$i]["Materia"]["materia_id"]),
-            'exact' => false,
-            'html' => false
-        ));
-        ?>
+                                    <?php
+                                    $palavras = explode(" ", $c_nova_materia[$i]['Materia']['conteudo']);
+                                    echo "Palavras: " . count($palavras) . ". " . "Carateres: " . strlen($c_nova_materia[$i]['Materia']['conteudo']) . "<br>";
+                                    echo $this->text->truncate($c_nova_materia[$i]['Materia']['conteudo'], 1200, array(
+                                        'ellipsis' => $this->Html->link(" ...", 'ver/' . $c_nova_materia[$i]["Materia"]["materia_id"]),
+                                        'exact' => false,
+                                        'html' => false
+                                    ));
+                                    ?>
                                 </p>
-                            </td>  
+                            </td>
                         </tr>
 
                         <tr>
 
-                            <td>Tags: 
-        <?php
-        if (isset($c_nova_materia[$i])) {
-            $q_tags = count($c_nova_materia[$i]) - 1;
+                            <td style="padding: 10px 10px 10px 10px">Tags:
+                                <?php
+                                if (isset($c_nova_materia[$i])) {
+                                    $q_tags = count($c_nova_materia[$i]) - 1;
 
-            for ($j = 1; $j <= $q_tags; $j++):
-                echo $this->Html->link($c_nova_materia[$i][$j]['Tag']['gt_setor'], '/tags/ver/' . $c_nova_materia[$i][$j]['Tag']['id']);
-                if ($j < $q_tags and $j < $q_tags - 1):
-                    echo ", ";
-                elseif ($j < $q_tags and $j == $q_tags - 1):
-                    echo " e ";
-                endif;
-            endfor;
-        }
-        ?>
+                                    for ($j = 1; $j <= $q_tags; $j++):
+                                        echo $this->Html->link($c_nova_materia[$i][$j]['Tag']['gt_setor'], '/tags/ver/' . $c_nova_materia[$i][$j]['Tag']['id']);
+                                        if ($j < $q_tags and $j < $q_tags - 1):
+                                            echo ", ";
+                                        elseif ($j < $q_tags and $j == $q_tags - 1):
+                                            echo " e ";
+                                        endif;
+                                    endfor;
+                                }
+                                ?>
                             </td>
 
                         </tr>
 
                     </table>
 
-    <?php endfor; ?>
+                <?php endfor; ?>
             </div>
 
-    <?php
-else:
-    echo "<h1>Ainda não há matérias publicadas neste mês!</h1>";
-endif;
-?>
+            <?php
+    else:
+        echo "<h1>Ainda não há matérias publicadas neste mês!</h1>";
+    endif;
+    ?>
 
         <!--
         Menu lateral direito
@@ -169,32 +173,38 @@ endif;
             <!--
             Tabela com a quantidade de matérias por ano e mês
             //-->
-            <table>
-                <tr><th colspan="2">Matérias</th></tr>
-<?php foreach ($datas as $c_anomes => $c_data): ?>
+            <table style="width: auto;">
+                <tr>
+                    <th colspan="2" style="padding: 5px 5px 5px 5px">Matérias</th>
+                </tr>
+                <?php foreach ($datas as $c_anomes => $c_data): ?>
                     <?php // echo "anomes: " . $c_anomes . " " . $c_data;  ?>
                     <tr>
-                        <td><?php echo $this->Html->link(substr($c_anomes, 0, 4), 'blog/' . 'ano:' . substr($c_anomes, 0, 4)) . " - " . strftime("%B", strtotime("01-" . substr($c_anomes, 5, 2) . "-2000")); ?></td>
-                        <td><?php echo '(' . $this->Html->link($c_data, 'blog/' . 'mes:' . substr($c_anomes, 5, 2) . '/ano:' . substr($c_anomes, 0, 4)) . ')'; ?></td>
-                    </tr>                         
-<?php endforeach; ?>
+                        <td style="padding: 5px 1px 1px 5px"><?php echo $this->Html->link(substr($c_anomes, 0, 4), 'blog/' . 'ano:' . substr($c_anomes, 0, 4)) . " - " . strftime("%B", strtotime("01-" . substr($c_anomes, 5, 2) . "-2000")); ?>
+                        </td>
+                        <td style="padding: 1px 1px 5px 5px"><?php echo '(' . $this->Html->link($c_data, 'blog/' . 'mes:' . substr($c_anomes, 5, 2) . '/ano:' . substr($c_anomes, 0, 4)) . ')'; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
             </table>
 
+            <br />
             <!--
             Tabelas com as tags
             //-->
-<?php // pr($tags);  ?>
-            <table>
-                <tr><th colspan="2">Marcas</th></tr>
-<?php foreach ($tags as $c_tag): ?>
+            <?php // pr($tags);  ?>
+            <table style="width: auto;">
+                <tr>
+                    <th colspan="2" style="padding: 1px 1px 1px 1px">Marcas</th>
+                </tr>
+                <?php foreach ($tags as $c_tag): ?>
                     <tr>
-                        <td><?php echo $this->Html->link($c_tag['tags']['gt_setor'], 'blog/' . 'mes:' . $mes . '/ano:' . $ano . '/tag:' . $c_tag['tags']['id']); ?></td>
-                        <td><?php echo $c_tag[0]['q_tags']; ?></td>
+                        <td style="padding: 1px 1px 5px 1px"><?php echo $this->Html->link($c_tag['tags']['gt_setor'], 'blog/' . 'mes:' . $mes . '/ano:' . $ano . '/tag:' . $c_tag['tags']['id']); ?>
+                        </td>
+                        <td style="padding: 1px 1px 1px 5px"><?php echo $c_tag[0]['q_tags']; ?></td>
                     </tr>
-<?php endforeach; ?>        
+                <?php endforeach; ?>
             </table>
-
         </div>
-
     </div>
 </div>
