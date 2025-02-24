@@ -26,6 +26,8 @@ class Ssindical extends AppModel {
 
     public $actsAs = array('Containable');
 
+    public $order = ['Ssindical.Secao_sindical' => 'ASC'];
+
     /**
      * hasMany associations
      *

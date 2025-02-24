@@ -28,7 +28,11 @@ class SsindicaisController extends AppController
         } else {
             $this->Ssindical->contain(['historicos' => ['order' => ['id' => 'desc']]]);
             $ssindicais = $this->Ssindical->find('all', ['order' => ['Secao_sindical' => 'asc']]);
-            $this->set('ssindicais', $ssindicais);
+            if ($this->Auth->user('role') === 'admin'):
+                $this->set('ssindicais', $ssindicais);
+            else:
+                $this->set('ssindicais', $this->paginate('Ssindical'));
+            endif;
         }
     }
 
@@ -236,6 +240,7 @@ class SsindicaisController extends AppController
             'limit' => '30'
         );
         $this->Ssindical->virtualFields['quantidade'] = 'quantidade';
+
         $this->paginate = $options;
         $estados = $this->paginate('Ssindical');
         $this->set('estados', $estados);
