@@ -66,12 +66,12 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             </div>
 
             <div class='menusuperior'>
-                <?php // echo $this->Html->link("Pautas", "/Pautas/", array('class' => 'aba')); ?>
+                <?php // echo $this->Html->link("Pautas", "/Pautas/", ['class' => 'aba']); ?>
                 <?php
                 if (isset($userData)):
-                    echo $this->Html->link('Administrador', '/Users/logout', array('class' => 'aba'));
+                    echo $this->Html->link('Administrador', '/Users/logout', ['class' => 'aba']);
                 else:
-                    echo $this->Html->link('Login', '/Users/login', array('class' => 'aba'));
+                    echo $this->Html->link('Login', '/Users/login', ['class' => 'aba']);
                 endif;
                 ?>
                 <?php echo $this->Html->link("Matérias", "/Materias/", array('class' => 'aba')); ?>
@@ -85,9 +85,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             <div class='celular'>
                 <?php
                 if (isset($userData)):
-                    echo $this->Html->link('Administrador', '/Users/logout', array('class' => 'aba'));
+                    echo $this->Html->link('Administrador', '/Users/logout', ['class' => 'aba']);
                 else:
-                    echo $this->Html->link('Login', '/Users/login', array('class' => 'aba'));
+                    echo $this->Html->link('Login', '/Users/login', ['class' => 'aba']);
                 endif;
                 ?>
                 <select onchange="window.location.href = this.value" class="aba">

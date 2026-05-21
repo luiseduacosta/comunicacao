@@ -1,5 +1,5 @@
 <?php
-pr($ssindicai);
+// pr($ssindicai);
 ?>
 
 <?php
@@ -7,8 +7,8 @@ echo $this->element('submenu_ssindicais');
 ?>
 
 <?php
-// echo $this->Html->link('Editar', 'editar/' . $ssindicai['Ssindicai']['Id'], array('class' => 'aba'));
-// echo $this->Html->link('Excluir', 'excluir/' . $ssindicai['Ssindicai']['Id'], array('class' => 'aba'));
+// echo $this->Html->link('Editar', 'editar/' . $ssindicai['Ssindicai']['Id'], ['class' => 'aba']);
+// echo $this->Html->link('Excluir', 'excluir/' . $ssindicai['Ssindicai']['Id'], ['class' => 'aba']);
 ?>
 
 <table>
@@ -27,28 +27,29 @@ echo $this->element('submenu_ssindicais');
     <tr>
         <td>Regional</td>
         <td>
-            <?php echo $ssindicai['Ssindical']['Regional']; ?>
+            <?php echo $ssindical['Ssindical']['Regional']; ?>
         </td>
     </tr>
     <tr>
         <td>Estado</td>
         <td>
-            <?php echo $ssindicai['Ssindical']['Estado']; ?>
+            <?php echo $ssindical['Ssindical']['Estado']; ?>
         </td>
     </tr>
     <tr>
         <td>Setor</td>
         <td>
-            <?php echo $ssindicai['Ssindical']['Setor']; ?>
+            <?php echo $ssindical['Ssindical']['Setor']; ?>
         </td>
     </tr>
     <tr>
         <td>Site</td>
         <td>
             <?php
-            echo $this->Html->link($ssindicai['Ssindical']['Site'], 'http://' . $ssindicai['Ssindical']['Site'], array(
+            echo $this->Html->link($ssindical['Ssindical']['Site'], 'http://' . $ssindical['Ssindical']['Site'], array(
                 'target' => '_blank',
-                'escape' => false));
+                'escape' => false
+            ));
             ?>
         </td>
     </tr>
@@ -56,25 +57,27 @@ echo $this->element('submenu_ssindicais');
         <td>Facebook</td>
         <td>
             <?php
-            echo $this->Html->link($ssindicai['Ssindical']['Facebook'], $ssindicai['Ssindical']['Facebook'], array(
+            echo $this->Html->link($ssindical['Ssindical']['Facebook'], $ssindical['Ssindical']['Facebook'], array(
                 'target' => '_blank',
-                'escape' => false));
+                'escape' => false
+            ));
             ?>
         </td>
     </tr>
     <tr>
         <td>YouTube</td>
         <td>
-<?php
-echo $this->Html->link($ssindicai['Ssindical']['Youtube'], $ssindicai['Ssindical']['Youtube'], array(
-    'target' => '_blank',
-    'escape' => false));
-?>
+            <?php
+            echo $this->Html->link($ssindical['Ssindical']['Youtube'], $ssindical['Ssindical']['Youtube'], array(
+                'target' => '_blank',
+                'escape' => false
+            ));
+            ?>
         </td>
     </tr>
     <tr>
         <td>
-<?php echo $ssindicai['Ssindical']['Observacoes']; ?>
+            <?php echo $ssindical['Ssindical']['Observacoes']; ?>
         </td>
     </tr>
 </table>

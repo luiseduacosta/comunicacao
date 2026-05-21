@@ -8,25 +8,25 @@
     <nav class="navbar nav-pills bg-light">
         <ul class="nav nav-pills">
             <li class="nav-item">
-                <?php echo $this->Html->link("Editar pauta", "editar/" . $pautas['Pauta']['id'], array('class' => 'nav-link')); ?>
+                <?php echo $this->Html->link("Editar pauta", "editar/" . $pautas['Pauta']['id'], ['class' => 'nav-link']); ?>
             </li>
             <li class="nav-item">
-                <?php echo $this->Html->link("Comentar pauta", "/Comentapautas/add/" . $pautas['Pauta']['id'], array('class' => 'nav-link')); ?>
+                <?php echo $this->Html->link("Comentar pauta", "/Comentapautas/add/" . $pautas['Pauta']['id'], ['class' => 'nav-link']); ?>
             </li>
             <li class="nav-item">
-                <?php // echo $this->Html->link("Excluir pauta", "excluir/" . $pautas['Pauta']['id'], array('class' => 'aba')); ?>
+                <?php // echo $this->Html->link("Excluir pauta", "excluir/" . $pautas['Pauta']['id'], ['class' => 'aba']); ?>
             </li>
             <li class="nav-item">
                 <?php
                 if ($pautas['Pauta']['arquivar'] == 0):
-                    echo $this->Html->link("Arquivar pauta", "arquivar/id:" . $pautas['Pauta']['id'] . '/arquivar:' . $pautas['Pauta']['arquivar'], array('class' => 'nav-link'));
+                    echo $this->Html->link("Arquivar pauta", "arquivar/id:" . $pautas['Pauta']['id'] . '/arquivar:' . $pautas['Pauta']['arquivar'], ['class' => 'nav-link']);
                 elseif ($pautas['Pauta']['arquivar'] == 1):
-                    echo $this->Html->link("Desarquivar pauta", "arquivar/id:" . $pautas['Pauta']['id'] . '/arquivar:' . $pautas['Pauta']['arquivar'], array('class' => 'nav-link'));
+                    echo $this->Html->link("Desarquivar pauta", "arquivar/id:" . $pautas['Pauta']['id'] . '/arquivar:' . $pautas['Pauta']['arquivar'], ['class' => 'nav-link']);
                 endif;
                 ?>
             </li>
             <li class="nav-item">   
-                <?php echo $this->Html->link("Fazer/Ver matéria", "/materias/busca_pauta_id/" . $pautas['Pauta']['id'], array('class' => 'nav-link')); ?>
+                <?php echo $this->Html->link("Fazer/Ver matéria", "/materias/busca_pauta_id/" . $pautas['Pauta']['id'], ['class' => 'nav-link']); ?>
             </li>
         </ul>
     </nav>

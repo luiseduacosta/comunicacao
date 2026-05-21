@@ -1,10 +1,10 @@
 <div class="submenusuperior">
-    <?php // echo $this->Html->link('Listar', 'index/', array('class' => 'aba')); ?>
-    <?php echo $this->Html->link('Ver cada', 'vercada/', array('class' => 'aba')); ?>    
-    <?php // echo $this->Html->link('Inserir', '/Pautas/index', array('class' => 'aba')); ?>
-    <?php // echo $this->Html->link('Blog', '/Materias/blog', array('class' => 'aba')); ?>
-    <?php echo $this->Html->link('Buscar', 'buscar/', array('class' => 'aba')); ?>
-    <?php // echo $this->Html->link('Classificar', 'sem_classificar/', array('class' => 'aba')); ?>
+    <?php // echo $this->Html->link('Listar', 'index/', ['class' => 'aba']); ?>
+    <?php echo $this->Html->link('Ver cada', 'vercada/', ['class' => 'aba']); ?>    
+    <?php // echo $this->Html->link('Inserir', '/Pautas/index', ['class' => 'aba']); ?>
+    <?php // echo $this->Html->link('Blog', '/Materias/blog', ['class' => 'aba']); ?>
+    <?php echo $this->Html->link('Buscar', 'buscar/', ['class' => 'aba']); ?>
+    <?php // echo $this->Html->link('Classificar', 'sem_classificar/', ['class' => 'aba']); ?>
 </div>
 <div class="celular">
     <select onchange="window.location.href = this.value" class="aba">

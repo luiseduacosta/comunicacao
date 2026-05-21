@@ -4,8 +4,8 @@ App::uses('AppModel', 'Model');
 
 /**
  * Ssindicai Model
+* @property Ssindical $Ssindical
  *
- * @property historicos $historicos
  */
 class Ssindical extends AppModel {
 
@@ -25,6 +25,8 @@ class Ssindical extends AppModel {
     // The Associations below have been created with all possible keys, those that are not needed can be removed
 
     public $actsAs = array('Containable');
+
+    public $order = ['Ssindical.Secao_sindical' => 'ASC'];
 
     /**
      * hasMany associations

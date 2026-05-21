@@ -11,13 +11,13 @@ echo $this->element('submenu_ssindicais');
     <nav class="navbar navbar-light bg-light" role="navigation">
         <ul class="nav nav-pills">
             <li class="nav-item">
-                <?php echo $this->Html->link('Editar', 'editar/' . $ssindical['Ssindical']['Id'], array('class' => 'nav-link')); ?>
+                <?php echo $this->Html->link('Editar', 'editar/' . $ssindical['Ssindical']['Id'], ['class' => 'nav-link']); ?>
             </li>
             <li class="nav-item">
-                <?php echo $this->Html->link('Excluir', 'excluir/' . $ssindical['Ssindical']['Id'], array('class' => 'nav-link')); ?>
+                <?php echo $this->Html->link('Excluir', 'excluir/' . $ssindical['Ssindical']['Id'], ['class' => 'nav-link']); ?>
             </li>
             <li class="nav-item">
-                <?php echo $this->Html->link('Novo histórico', ['controller' => 'historicos', 'action' => 'add', $ssindical['Ssindical']['Id']], array('class' => 'nav-link')); ?>
+                <?php echo $this->Html->link('Novo histórico', ['controller' => 'historicos', 'action' => 'add', $ssindical['Ssindical']['Id']], ['class' => 'nav-link']); ?>
             </li>
         </ul>
     </nav>

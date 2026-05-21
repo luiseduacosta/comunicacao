@@ -5,17 +5,17 @@
 ?>
 <!--
 <div class="subsubmenusuperior">
-    <?php echo $this->Html->link("Editar pauta", "editar/" . $pautas['Pauta']['id'], array('class' => 'aba')); ?>
-    <?php echo $this->Html->link("Comentar pauta", "/Comentapautas/add/" . $pautas['Pauta']['id'], array('class' => 'aba')); ?>
-    <?php // echo $this->Html->link("Excluir pauta", "excluir/" . $pautas['Pauta']['id'], array('class' => 'aba')); ?>
+    <?php echo $this->Html->link("Editar pauta", "editar/" . $pautas['Pauta']['id'], ['class' => 'aba']); ?>
+    <?php echo $this->Html->link("Comentar pauta", "/Comentapautas/add/" . $pautas['Pauta']['id'], ['class' => 'aba']); ?>
+    <?php // echo $this->Html->link("Excluir pauta", "excluir/" . $pautas['Pauta']['id'], ['class' => 'aba']); ?>
     <?php
     if ($pautas['Pauta']['arquivar'] == 0):
-        echo $this->Html->link("Arquivar pauta", "arquivar/id:" . $pautas['Pauta']['id'] . '/arquivar:' . $pautas['Pauta']['arquivar'], array('class' => 'aba'));
+        echo $this->Html->link("Arquivar pauta", "arquivar/id:" . $pautas['Pauta']['id'] . '/arquivar:' . $pautas['Pauta']['arquivar'], ['class' => 'aba']);
     elseif ($pautas['Pauta']['arquivar'] == 1):
-        echo $this->Html->link("Desarquivar pauta", "arquivar/id:" . $pautas['Pauta']['id'] . '/arquivar:' . $pautas['Pauta']['arquivar'], array('class' => 'aba'));
+        echo $this->Html->link("Desarquivar pauta", "arquivar/id:" . $pautas['Pauta']['id'] . '/arquivar:' . $pautas['Pauta']['arquivar'], ['class' => 'aba']);
     endif;
     ?>
-    <?php echo $this->Html->link("Fazer/Ver matéria", "/materias/busca_pauta_id/" . $pautas['Pauta']['id'], array('class' => 'aba')); ?>
+    <?php echo $this->Html->link("Fazer/Ver matéria", "/materias/busca_pauta_id/" . $pautas['Pauta']['id'], ['class' => 'aba']); ?>
     <?php echo "<br>"; ?>
 </div>
 //-->

@@ -36,10 +36,9 @@ echo $this->element('submenu_ssindicais');
 
             <h1>
                 <?php
-                echo $this->Html->link('Ir para registro', 'ver/' . $c_ssindicais['Ssindical']['Id']);
-                echo " || ";
+                echo '<p style="font-size:70%;">' . $this->Html->link($c_ssindicais['Ssindical']['Secao_sindical_extenso'], 'ver/' . $c_ssindicais['Ssindical']['Id']) . '</p>';
 
-                echo $this->Html->link($c_ssindicais['Ssindical']['Site'], 'http://' . $c_ssindicais['Ssindical']['Site'], array('target' => '_blank',
+                echo '<p style="font-size:70%;">' . $this->Html->link('Site', 'http://' . $c_ssindicais['Ssindical']['Site'], array('target' => '_blank',
                     'escape' => false));
 
                 if (!empty($c_ssindicais['Ssindical']['Facebook'])) {
@@ -53,12 +52,15 @@ echo $this->element('submenu_ssindicais');
                     echo $this->Html->link('Youtube', $c_ssindicais['Ssindical']['Youtube'], array('target' => '_blank',
                         'escape' => false));
                 }
+
+                echo '</p>';
+
                 ?>
 
 
             </h1>
             <!--
-            <object type="text/html" data="http://<?php // echo $c_ssindicais['Ssindicai']['Site'];      ?>" 
+            <object type="text/html" data="http://<?php // echo $c_ssindicais['Ssindicai']['Site']; ?>" 
                     width="1000" height="1200" typemustmatch>
             </object>
             //-->

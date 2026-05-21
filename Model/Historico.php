@@ -4,8 +4,8 @@ App::uses('AppModel', 'Model');
 
 /**
  * Historico Model
- *
- * @property Ssindical $Ssindical
+ * @property historicos $historicos
+ * 
  */
 class Historico extends AppModel {
 

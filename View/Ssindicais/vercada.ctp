@@ -72,7 +72,7 @@ $this->Html->link('Editar', 'editar/');
             <tr>
                 <td>Pulsefeed</td>
                 <td><?php // echo $c_ssindicais['Ssindicai']['Pulsefeed'];    ?></td>
-            </tr>        
+            </tr>
         //-->
 
             <tr>
