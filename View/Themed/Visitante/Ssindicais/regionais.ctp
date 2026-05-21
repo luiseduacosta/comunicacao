@@ -16,7 +16,7 @@ echo $this->element('submenu_ssindicais');
 <?php $total = 0; ?>
 <?php foreach ($regionais as $c_regionais): ?>
     <tr>
-        <td><?php echo $this->Html->link($c_regionais['Ssindicai']['Regional'], 'seleciona/' . 'regional/' . $c_regionais['Ssindicai']['Regional']); ?></td>
+        <td><?php echo $this->Html->link($c_regionais['Ssindical']['Regional'], 'seleciona/' . 'regional/' . $c_regionais['Ssindical']['Regional']); ?></td>
         <td><?php echo $c_regionais['0']['quantidade']; ?></td>
     </tr>
     <?php $total = $total + $c_regionais['0']['quantidade']; ?>

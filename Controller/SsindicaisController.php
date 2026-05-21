@@ -23,10 +23,12 @@ class SsindicaisController extends AppController {
 
         if (!empty($campo)) {
             $this->Ssindical->contain(['historicos' => ['order' => ['id' => 'desc']]]);
-            $this->set('ssindicais', $this->Ssindical->find('all', array($campo => $valor)));
+            $this->set('ssindicais', $this->Ssindical->find('all', [$campo => $valor]) , ['order' => ['Secao_sindical' => 'desc']]);
         } else {
             $this->Ssindical->contain(['historicos' => ['order' => ['id' => 'desc']]]);
-            $this->set('ssindicais', $this->Ssindical->find('all'));
+            // $ssindicais = $this->Ssindical->find('all');
+            // pr($ssindicais);
+            $this->set('ssindicais', $this->Ssindical->find('all'), ['order' => ['Secao_sindical' => 'desc']]);
         }
     }
 
