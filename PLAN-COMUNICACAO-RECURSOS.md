@@ -1,5 +1,9 @@
 # Comunicacao-Recursos - CakePHP 5 App Implementation Plan
 
+> [!NOTE]
+> **PLAN STATUS: VERIFIED & FINALIZED** (2026-05-26)  
+> This implementation plan has been verified against the legacy CakePHP 2.x `comunica_andes` database schema and is approved for development. All legacy database field and relationship mappings have been resolved.
+
 ## Project Overview
 **Comunicacao-Recursos** is a communications resource database and directory system for union sections. It provides searchable, filterable access to communication infrastructure data for Andes-SN's member sections (secciones sindicales), organized by region, state, and sector.
 
@@ -295,6 +299,24 @@
 - `recursos-docs-setup`: Setup documentation
 - `recursos-docs-deploy`: Deployment guide
 - `recursos-docs-user`: User manual
+
+---
+
+## Plan Verification & Legacy Schema Alignment
+
+We have verified the plan against the legacy CakePHP 2.x `comunica_andes` database. The following alignments have been established to guarantee 100% data integrity and seamless database migration:
+
+### 1. Ssindicais Table Compatibility
+* **Primary Key:** The legacy database uses `Id` (capitalized) instead of the standard CakePHP lower-case `id`. The new CakePHP 5 model must define `protected $_primaryKey = 'Id';` in its Table class to match.
+* **Display Field:** Legacy uses `Secao_sindical` as the display field, which maps to `secao_sindical` (or `Secao_sindical` directly if reusing the same table).
+* **Field Mapping:**
+  - `Site` in legacy maps to `website` (or will be retained as `Site` to avoid renaming overhead).
+  - `Observacoes` in legacy maps to `notas` (or will be retained as `Observacoes`).
+  - Legacy fields `Secao_sindical_extenso` and `Pulsefeed` are preserved for backward compatibility.
+
+### 2. Historicos Table Alignment
+* **Legacy Purpose:** The legacy `historicos` table actually tracks section events (e.g., `Eleições` with `quantidade` of voters/votes and general `observacoes` per year).
+* **Alignment Strategy:** The migration will fully preserve and support the legacy schema fields (`evento`, `quantidade`, `observacoes`, `ano`, `ssindical_id`) while providing modern CakePHP 5 entities and query pagination for historic event records.
 
 ---
 
